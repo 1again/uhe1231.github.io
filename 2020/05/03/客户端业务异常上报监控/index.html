@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-16-21-11.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-17-34-30.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-17-43-44.png">
-<meta property="og:updated_time" content="2020-05-03T09:52:28.295Z">
+<meta property="og:updated_time" content="2020-05-03T11:37:40.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="客户端业务异常上报监控">
 <meta name="twitter:description" content="前提其实一开始我是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检索logstash, 上报格式转换kibana, 统计展示openresty, 上报网关(和”隔壁”的架构差不多, 只是用ope">
@@ -385,7 +385,7 @@
       
 
       
-        <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始我是想放在 <a href="/2020/05/02/服务端业务异常日志监控">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
+        <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始我是想放在 <a href="/2020/05/02/服务端业务异常日志监控/">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
 <li>客户端请求CDN卡顿</li>
 <li>客户端请求服务端卡顿</li>
@@ -407,7 +407,7 @@
 <li>最后云主机磁盘的RAID也跟着坏了.</li>
 </ol>
 <p>即使这些情况都发生了, 最多就是丢失一些上报数据, 完全不响应大局<br>综上所述, 我们没有上kafka避免增加维护成本.</p>
-<h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><h2 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h2><p>ELK老生常谈了, 在我们这个数量级的情况下大同小异<br>没什么特殊的地方, 想看请出门左转 <a href="/2020/05/02/服务端业务异常日志监控">服务端业务异常日志监控</a></p>
+<h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><h2 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h2><p>ELK老生常谈了, 在我们这个数量级的情况下大同小异<br>没什么特殊的地方, 想看请 <a href="/2020/05/02/服务端业务异常日志监控#实施">出门左转</a></p>
 <h2 id="openresty"><a href="#openresty" class="headerlink" title="openresty"></a>openresty</h2><p>openresty这块, 我特意去翻了翻代码<br>发现也没什么好说的, 就是收到请求后<br>使用resty.http模块向logstash发送请求</p>
 <p>唯一有点需要注意的是, 我们使用使用json格式传输<br>为了不影响用户的体验, 发生事件后, 将事件数据push进一个数组<br>然后间隔一分钟将整个数组上报<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        消息1</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        消息2</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
 <p>哦哦哦, 对了, 还有一点需要注意.<br>因为面向的是多项目的, 所以可能存在不同版本兼容的问题.<br>可以根据项目对数据格式做解析, 也可以定义版本, 根据版本做解析.<br>我这里是根据项目对解析的, 大概是这么个流程</p>
@@ -434,7 +434,7 @@
 <p>像上面的报错信息, 我们需要截取<code>main_6_1100.min.js:2:7760</code>来作为错误位置来进行聚合统计<br>可以使用下面这个grok的表达式来捕获这个错误位置的信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">grok &#123;</span><br><span class="line">    match =&gt; &#123;</span><br><span class="line">        &quot;message&quot; =&gt; [</span><br><span class="line">            &quot;^.+?(?&lt;fileline&gt;[\w\.]+\.js:[0-9]+:[0-9]+).+$&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样就会在上报的数据中添加了一个fileline字段来代表异常错误的位置信息.</p>
-<h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p>未完待续…</p>
+<h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p><a href="/2020/05/02/服务端业务异常日志监控#监控检测">出门左转</a></p>
 <h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><h2 id="请求CDN监控效果"><a href="#请求CDN监控效果" class="headerlink" title="请求CDN监控效果"></a>请求CDN监控效果</h2><p><img src="2020-05-03-16-19-09.png" alt><br><img src="2020-05-03-16-19-42.png" alt></p>
 <h2 id="请求服务端监控效果"><a href="#请求服务端监控效果" class="headerlink" title="请求服务端监控效果"></a>请求服务端监控效果</h2><p><img src="2020-05-03-16-20-16.png" alt><br><img src="2020-05-03-16-20-44.png" alt></p>
 <p>这里解释下, 为什么上图请求服务端的失败统计表为空.<br>是因为这个请求服务端实现的<code>成本较高</code>, 而根据协议统计出的信息也不具备<code>指导性意见</code><br>所以我们就没有纠结这个问题了</p>
