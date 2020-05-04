@@ -379,7 +379,8 @@
 
       
         
-          <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始我是想放在 <a href="/2020/05/02/服务端业务异常日志监控/">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们是一家H5的游戏公司<br>客户端以网页, 小程序, APP的方式发布<br>对CDN的请求非常的大, 所以CDN请求的影响是非常大的.</p>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始是想放在 <a href="/2020/05/02/服务端业务异常日志监控/">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
 <li>客户端请求CDN卡顿</li>
 <li>客户端请求服务端卡顿</li>
@@ -554,7 +555,8 @@
 
       
         
-          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">一般情况下</span><br><span class="line"></span><br><span class="line">1. 业务更新版本</span><br><span class="line">2. 等待用户反馈问题</span><br><span class="line">3. 判断客户端还是服务端</span><br><span class="line">4. 根据用户信息查看日志</span><br><span class="line">5. 修复BUG更新版本</span><br><span class="line"></span><br><span class="line">解决问题被动而且效率低下.</span><br><span class="line">大量体验不好的用户直接流失.</span><br></pre></td></tr></table></figure>
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们是一家H5的游戏公司<br>多数项目的服务端使用SKYNET+LUA的形式开发<br>协议层走的的websocket</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">一般情况下我们都是走这样的流程</span><br><span class="line"></span><br><span class="line">1. 业务更新版本</span><br><span class="line">2. 等待用户反馈问题</span><br><span class="line">3. 判断客户端还是服务端</span><br><span class="line">4. 根据用户信息查看日志</span><br><span class="line">5. 修复BUG更新版本</span><br><span class="line"></span><br><span class="line">解决问题被动而且效率低下.</span><br><span class="line">大量体验不好的用户直接流失.</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/05/02/服务端业务异常日志监控/#more" rel="contents">

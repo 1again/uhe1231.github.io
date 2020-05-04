@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="前提其实一开始我是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检索logstash, 上报格式转换kibana, 统计展示openresty, 上报网关(和”隔壁”的架构差不多, 只是用ope">
+<meta name="description" content="背景我们是一家H5的游戏公司客户端以网页, 小程序, APP的方式发布对CDN的请求非常的大, 所以CDN请求的影响是非常大的. 前提其实一开始是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检">
 <meta name="keywords" content="监控,ELK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="客户端业务异常上报监控">
 <meta property="og:url" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
-<meta property="og:description" content="前提其实一开始我是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检索logstash, 上报格式转换kibana, 统计展示openresty, 上报网关(和”隔壁”的架构差不多, 只是用ope">
+<meta property="og:description" content="背景我们是一家H5的游戏公司客户端以网页, 小程序, APP的方式发布对CDN的请求非常的大, 所以CDN请求的影响是非常大的. 前提其实一开始是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-12-42-55.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-16-19-09.png">
@@ -97,10 +97,10 @@
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-16-21-11.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-17-34-30.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-17-43-44.png">
-<meta property="og:updated_time" content="2020-05-03T11:37:40.168Z">
+<meta property="og:updated_time" content="2020-05-04T03:24:48.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="客户端业务异常上报监控">
-<meta name="twitter:description" content="前提其实一开始我是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检索logstash, 上报格式转换kibana, 统计展示openresty, 上报网关(和”隔壁”的架构差不多, 只是用ope">
+<meta name="twitter:description" content="背景我们是一家H5的游戏公司客户端以网页, 小程序, APP的方式发布对CDN的请求非常的大, 所以CDN请求的影响是非常大的. 前提其实一开始是想放在 服务端业务异常日志监控 一起讲的然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.所以这里就拆开单独写了(真的不是为了凑数!!!) 问题 客户端请求CDN卡顿 客户端请求服务端卡顿 客户端代码异常  方案elasticsearch, 存储检">
 <meta name="twitter:image" content="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/2020-05-03-12-42-55.png">
 
 
@@ -385,7 +385,8 @@
       
 
       
-        <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始我是想放在 <a href="/2020/05/02/服务端业务异常日志监控/">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们是一家H5的游戏公司<br>客户端以网页, 小程序, APP的方式发布<br>对CDN的请求非常的大, 所以CDN请求的影响是非常大的.</p>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始是想放在 <a href="/2020/05/02/服务端业务异常日志监控/">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
 <li>客户端请求CDN卡顿</li>
 <li>客户端请求服务端卡顿</li>
@@ -408,17 +409,17 @@
 </ol>
 <p>即使这些情况都发生了, 最多就是丢失一些上报数据, 完全不响应大局<br>综上所述, 我们没有上kafka避免增加维护成本.</p>
 <h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><h2 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h2><p>ELK老生常谈了, 在我们这个数量级的情况下大同小异<br>没什么特殊的地方, 想看请 <a href="/2020/05/02/服务端业务异常日志监控#实施">出门左转</a></p>
-<h2 id="openresty"><a href="#openresty" class="headerlink" title="openresty"></a>openresty</h2><p>openresty这块, 我特意去翻了翻代码<br>发现也没什么好说的, 就是收到请求后<br>使用resty.http模块向logstash发送请求</p>
+<h2 id="openresty"><a href="#openresty" class="headerlink" title="openresty"></a>openresty</h2><p>openresty这块, 特意去翻了翻代码<br>发现也没什么好说的, 就是收到请求后<br>使用resty.http模块向logstash发送请求</p>
 <p>唯一有点需要注意的是, 我们使用使用json格式传输<br>为了不影响用户的体验, 发生事件后, 将事件数据push进一个数组<br>然后间隔一分钟将整个数组上报<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        消息1</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        消息2</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>哦哦哦, 对了, 还有一点需要注意.<br>因为面向的是多项目的, 所以可能存在不同版本兼容的问题.<br>可以根据项目对数据格式做解析, 也可以定义版本, 根据版本做解析.<br>我这里是根据项目对解析的, 大概是这么个流程</p>
-<p>客户端 -&gt; 网关入口 -&gt; 项目模块 -&gt; 数据格式 -&gt; 请求logstash</p>
+<p>哦哦哦, 对了, 还有一点需要注意.<br>因为面向的是多项目的, 所以可能存在不同版本兼容的问题.<br>可以根据项目对数据格式做解析, 也可以定义版本, 根据版本做解析.<br>这里是根据项目对解析的, 大概是这么个流程</p>
+<p>客户端 -&gt; 网关入口 -&gt; 项目解析 -&gt; 标准格式 -&gt; 请求logstash</p>
 <h2 id="埋点"><a href="#埋点" class="headerlink" title="埋点"></a>埋点</h2><p>重点来了, 重点来了, 重点来了<br>这里最难的点在于需要和不同项目组的人<code>沟通</code>.</p>
 <ol>
 <li>得先让和他们解释做这个能带来什么<code>帮助</code></li>
 <li>按照文档标准沟通清楚执行并且最后<code>验收</code></li>
 <li>考虑不同项目的情况是否能够<code>实现</code></li>
 </ol>
-<p>先来看看我们是什么落地的</p>
+<p>先来看看我们是怎么落地的</p>
 <h3 id="CDN请求超时"><a href="#CDN请求超时" class="headerlink" title="CDN请求超时"></a>CDN请求超时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在http请求开始时记录开始时间.</span><br><span class="line">在http请求响应时记录结束时间.</span><br><span class="line"></span><br><span class="line">请求耗时 = 结束时间 - 开始时间</span><br><span class="line"></span><br><span class="line">if 请求耗时 &gt; 5秒 then</span><br><span class="line">    触发CDN请求超时事件</span><br><span class="line">    (记录耗时时间, 账号ID, 请求资源名等...)</span><br></pre></td></tr></table></figure>
 <h3 id="CDN请求失败"><a href="#CDN请求失败" class="headerlink" title="CDN请求失败"></a>CDN请求失败</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">当请求HTTP失败时</span><br><span class="line">    触发CDN请求失败事件</span><br><span class="line">    (记录耗时时间, 账号ID, 错误类型, 请求资源名等...)</span><br></pre></td></tr></table></figure>
 <h3 id="请求服务端异常"><a href="#请求服务端异常" class="headerlink" title="请求服务端异常"></a>请求服务端异常</h3><p>这里和CDN请求有些类似, 就不重复了.<br>区别在于, 这个是用于检测用户连接服务器的状态.<br>可能存在服务端系统问题, 服务端代码问题, 服务端网络问题</p>
@@ -437,7 +438,8 @@
 <h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p><a href="/2020/05/02/服务端业务异常日志监控#监控检测">出门左转</a></p>
 <h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><h2 id="请求CDN监控效果"><a href="#请求CDN监控效果" class="headerlink" title="请求CDN监控效果"></a>请求CDN监控效果</h2><p><img src="2020-05-03-16-19-09.png" alt><br><img src="2020-05-03-16-19-42.png" alt></p>
 <h2 id="请求服务端监控效果"><a href="#请求服务端监控效果" class="headerlink" title="请求服务端监控效果"></a>请求服务端监控效果</h2><p><img src="2020-05-03-16-20-16.png" alt><br><img src="2020-05-03-16-20-44.png" alt></p>
-<p>这里解释下, 为什么上图请求服务端的失败统计表为空.<br>是因为这个请求服务端实现的<code>成本较高</code>, 而根据协议统计出的信息也不具备<code>指导性意见</code><br>所以我们就没有纠结这个问题了</p>
+<p>这里解释下, 为什么上图请求服务端的失败统计表为空.<br>是因为请求服务端失败时记录协议ID实现的<code>成本较高</code><br>而根据协议ID统计出的信息也不具备<code>指导性意见</code></p>
+<p>所以我们就没有纠结这个问题了</p>
 <h2 id="客户端代码异常监控效果"><a href="#客户端代码异常监控效果" class="headerlink" title="客户端代码异常监控效果"></a>客户端代码异常监控效果</h2><p><img src="2020-05-03-16-21-11.png" alt></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>就在写这个Blog的同时, 我们业务的CDN发生了一次故障.</p>
 <p><img src="2020-05-03-17-34-30.png" alt></p>
@@ -629,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前提"><span class="nav-number">1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案"><span class="nav-number">3.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实施"><span class="nav-number">4.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ELK"><span class="nav-number">4.1.</span> <span class="nav-text">ELK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty"><span class="nav-number">4.2.</span> <span class="nav-text">openresty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#埋点"><span class="nav-number">4.3.</span> <span class="nav-text">埋点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN请求超时"><span class="nav-number">4.3.1.</span> <span class="nav-text">CDN请求超时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN请求失败"><span class="nav-number">4.3.2.</span> <span class="nav-text">CDN请求失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求服务端异常"><span class="nav-number">4.3.3.</span> <span class="nav-text">请求服务端异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端代码异常"><span class="nav-number">4.3.4.</span> <span class="nav-text">客户端代码异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控"><span class="nav-number">4.4.</span> <span class="nav-text">监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果"><span class="nav-number">5.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求CDN监控效果"><span class="nav-number">5.1.</span> <span class="nav-text">请求CDN监控效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求服务端监控效果"><span class="nav-number">5.2.</span> <span class="nav-text">请求服务端监控效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端代码异常监控效果"><span class="nav-number">5.3.</span> <span class="nav-text">客户端代码异常监控效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前提"><span class="nav-number">2.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">3.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案"><span class="nav-number">4.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实施"><span class="nav-number">5.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ELK"><span class="nav-number">5.1.</span> <span class="nav-text">ELK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty"><span class="nav-number">5.2.</span> <span class="nav-text">openresty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#埋点"><span class="nav-number">5.3.</span> <span class="nav-text">埋点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN请求超时"><span class="nav-number">5.3.1.</span> <span class="nav-text">CDN请求超时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN请求失败"><span class="nav-number">5.3.2.</span> <span class="nav-text">CDN请求失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求服务端异常"><span class="nav-number">5.3.3.</span> <span class="nav-text">请求服务端异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端代码异常"><span class="nav-number">5.3.4.</span> <span class="nav-text">客户端代码异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控"><span class="nav-number">5.4.</span> <span class="nav-text">监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果"><span class="nav-number">6.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求CDN监控效果"><span class="nav-number">6.1.</span> <span class="nav-text">请求CDN监控效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求服务端监控效果"><span class="nav-number">6.2.</span> <span class="nav-text">请求服务端监控效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端代码异常监控效果"><span class="nav-number">6.3.</span> <span class="nav-text">客户端代码异常监控效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
