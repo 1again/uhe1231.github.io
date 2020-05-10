@@ -368,14 +368,14 @@
 
       
         
-          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>突然被抓来协助大数据的上报网关(openresty)</p>
+          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>突然被抓来协助大数据的上报网关(OpenResty)</p>
 <p>client -&gt; OpenResty -&gt; Kafka -&gt; ClickHouse</p>
 <p>这里的OpenResty负责数据的兼容, 过滤, 路由</p>
 <p>因为需要经常的修改OpenResty的逻辑配合数据分析这边的需求<br>导致改动容易出现问题, 需要搞个测试环境.<br>通过测试环境的验证后, 在更新到正式环境</p>
 <p>实施方案是使用nginx的mirror模块将请求镜像到测试站点.<br>同样的代码和配置, 通过环境变量来区分生产和测试环境</p>
 <p>大概是这样的.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">                                (不返回client)</span><br><span class="line">client &lt;-------------&gt; nginx &lt;-------------&gt; mirror</span><br></pre></td></tr></table></figure>
-<p>那么问题来了<br>在实施中, 请求主站点时, 镜像站点也能收到请求<br>但一直现实status_code 400, 从表现上来看像是POST的数据丢失了.<br>在nginx的log_format把<code>$request_body</code>参数加上, 发现确实POST数据没有.</p>
+<p>那么问题来了<br>在实施中, 请求主站点时, 镜像站点也能收到请求<br>但一直显示<code>status_code 400</code>, 从表现上来看像是POST的数据丢失了.<br>在nginx的log_format把<code>$request_body</code>参数加上, 发现确实POST数据没有.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.19.0.1 - [08/May/2020:06:35:09] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br><span class="line">172.19.0.1 - [08/May/2020:07:01:09] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br><span class="line">172.19.0.1 - [08/May/2020:07:02:43] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
