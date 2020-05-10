@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试,运维开发,复盘,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhiWei Show" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="背景学历: 大专 经验: 7, 8年的游戏运维 岗位: 运维开发 地点: 珠海办公 前传电面1自我介绍balabala~~~ 对K8S的了解12345678etcd, 持久化的存储api-server, 组件通信的网关调度器, 针对资源, 亲和性的调度控制器, 根据状态, 策略进行变更控制kubelet, 负责对本地执行具体的任务kube-proxy, 对请求进行负载均衡service, pod的">
+<meta name="keywords" content="面试,运维开发,复盘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="珠海金山办公运维开发面试复盘">
+<meta property="og:url" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/index.html">
+<meta property="og:site_name" content="ZhiWei Show">
+<meta property="og:description" content="背景学历: 大专 经验: 7, 8年的游戏运维 岗位: 运维开发 地点: 珠海办公 前传电面1自我介绍balabala~~~ 对K8S的了解12345678etcd, 持久化的存储api-server, 组件通信的网关调度器, 针对资源, 亲和性的调度控制器, 根据状态, 策略进行变更控制kubelet, 负责对本地执行具体的任务kube-proxy, 对请求进行负载均衡service, pod的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-16-25-21.png">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-16-25-31.png">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-16-28-16.png">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-17-31-41.png">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-17-37-18.png">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-16-24-13.png">
+<meta property="og:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/四七层代理时序图.png">
+<meta property="og:updated_time" content="2020-05-05T08:56:40.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="珠海金山办公运维开发面试复盘">
+<meta name="twitter:description" content="背景学历: 大专 经验: 7, 8年的游戏运维 岗位: 运维开发 地点: 珠海办公 前传电面1自我介绍balabala~~~ 对K8S的了解12345678etcd, 持久化的存储api-server, 组件通信的网关调度器, 针对资源, 亲和性的调度控制器, 根据状态, 策略进行变更控制kubelet, 负责对本地执行具体的任务kube-proxy, 对请求进行负载均衡service, pod的">
+<meta name="twitter:image" content="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/2020-05-01-16-25-21.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/">
+
+
+
+
+
+  <title>珠海金山办公运维开发面试复盘 | ZhiWei Show</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZhiWei Show</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Just Show Me</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">珠海金山办公运维开发面试复盘</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-01T10:23:59+08:00">
+                2020-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/" itemprop="url" rel="index">
+                    <span itemprop="name">复盘</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>学历: 大专</p>
+<p>经验: 7, 8年的游戏运维</p>
+<p>岗位: 运维开发</p>
+<p>地点: 珠海办公</p>
+<h1 id="前传"><a href="#前传" class="headerlink" title="前传"></a>前传</h1><h2 id="电面1"><a href="#电面1" class="headerlink" title="电面1"></a>电面1</h2><h3 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h3><p>balabala~~~</p>
+<h3 id="对K8S的了解"><a href="#对K8S的了解" class="headerlink" title="对K8S的了解"></a>对K8S的了解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">etcd, 持久化的存储</span><br><span class="line">api-server, 组件通信的网关</span><br><span class="line">调度器, 针对资源, 亲和性的调度</span><br><span class="line">控制器, 根据状态, 策略进行变更控制</span><br><span class="line">kubelet, 负责对本地执行具体的任务</span><br><span class="line">kube-proxy, 对请求进行负载均衡</span><br><span class="line">service, pod的抽象, 对外提供统一的功能</span><br><span class="line">pod, container的抽象, 共享资源</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="OSI模型"><a href="#OSI模型" class="headerlink" title="OSI模型"></a>OSI模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//下层为上层提供服务, 网络层以下(包括)可以不同</span><br><span class="line">//这个模型目前只是协议设计时做参考.</span><br><span class="line">应用层</span><br><span class="line">表示层</span><br><span class="line">会话层</span><br><span class="line">传输层</span><br><span class="line">网络层</span><br><span class="line">数据链路层</span><br><span class="line">物理层</span><br><span class="line"></span><br><span class="line">//目前主流使用的是基于TCP/IP的五层模型</span><br><span class="line">//因为会话层和表示层根据业务的需求不同很难达成标准</span><br><span class="line">//所以都在应用层自定义了</span><br><span class="line">应用层</span><br><span class="line">传输层</span><br><span class="line">网络层</span><br><span class="line">数据链路层</span><br><span class="line">物理层</span><br></pre></td></tr></table></figure>
+<h3 id="vxlan的原理"><a href="#vxlan的原理" class="headerlink" title="vxlan的原理"></a>vxlan的原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将二层的数据通过UDP端口封装成三层的网络进行转发</span><br><span class="line">可以避免二层网络规模和区域的限制</span><br></pre></td></tr></table></figure>
+<h3 id="docker的原理"><a href="#docker的原理" class="headerlink" title="docker的原理"></a>docker的原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">请求系统调用时传递参数, 从而实现多维度的隔离</span><br><span class="line">使用联合文件, COW(写时复制)降低IO实现container的文件系统</span><br><span class="line">使用cgroup限制container的资源避免引起雪崩</span><br><span class="line">使用网桥, peer实现container的网络</span><br></pre></td></tr></table></figure>
+<h3 id="ELK的索引管理和优化"><a href="#ELK的索引管理和优化" class="headerlink" title="ELK的索引管理和优化"></a>ELK的索引管理和优化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">索引管理</span><br><span class="line">    7.0之前都是根据日期来设置index的名字, 方便清理</span><br><span class="line">    7.0之后通过ilm方式自动管理index的生命周期</span><br><span class="line"></span><br><span class="line">优化思路</span><br><span class="line">    每个分配适当的索引大小(参考内存大小)</span><br><span class="line">    调整分片数量</span><br><span class="line">    提高段合并时间</span><br><span class="line">    降低写入数据的实时性</span><br></pre></td></tr></table></figure>
+<h2 id="电面2"><a href="#电面2" class="headerlink" title="电面2"></a>电面2</h2><h3 id="自我介绍-1"><a href="#自我介绍-1" class="headerlink" title="自我介绍"></a>自我介绍</h3><p>balabala~~</p>
+<h3 id="七层-四层负载均衡区别以及LVS的了解"><a href="#七层-四层负载均衡区别以及LVS的了解" class="headerlink" title="七层/四层负载均衡区别以及LVS的了解"></a>七层/四层负载均衡区别以及LVS的了解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">四层的代理无法获取七层的信息</span><br><span class="line"></span><br><span class="line">client -&gt; directory -&gt; realserver</span><br><span class="line"></span><br><span class="line">1. nat</span><br><span class="line">    1.1 修改请求数据包的目标IP/目标PORT</span><br><span class="line">    1.2 将realserver的网关指向directory</span><br><span class="line">    1.3 directory收到后回复的数据包时会根据之前的nat记录还原发送给client</span><br><span class="line">2. dr</span><br><span class="line">    2.1 修改请求数据包的目标MAC地址</span><br><span class="line">    2.2 在realserver上的lo接口添加一个vip(禁止arp响应, 使用源IP发送)</span><br><span class="line">    2.3 当回复数据时, 发送给网关然后直接发送给client</span><br><span class="line">3. fullnet</span><br><span class="line">    类似于nat模式, 不只是修改目标IP和端口, 同时也会修改源IP和端口</span><br><span class="line">    这样readlserver就不需要做任何修改</span><br><span class="line">4. iptunnl</span><br><span class="line">    将收到的数据包再次封装成一个三层IP数据包, 然后发送出去</span><br><span class="line">    通过三层的网络(跨局域网), 到达realserver后解开封装的数据包获得</span><br><span class="line">    client请求的数据包, 然后处理</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line">    目前不太确定iptunnl是直接回复client还是通过directory回复的, 理论上来说</span><br><span class="line">    realserver有client的请求数据包, 有iptunnl的封装包, 完全可以直接返回</span><br><span class="line">    是否有其他的问题和考虑</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="kafka吞吐量高的原因"><a href="#kafka吞吐量高的原因" class="headerlink" title="kafka吞吐量高的原因"></a>kafka吞吐量高的原因</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">每个topic会将数据拆分在不同的分区上, 而这些分区会存放在不同的broken上</span><br><span class="line">所以能够将数据处理分布在各个broken上执行, 从而实现了高吞吐量</span><br><span class="line"></span><br><span class="line">(有点类似于elasticsearch的分片机制)</span><br></pre></td></tr></table></figure>
+<h3 id="cache-buffer"><a href="#cache-buffer" class="headerlink" title="cache/buffer"></a>cache/buffer</h3><p>cache<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">因为外部存储的操作非常耗时, 所以会尽可能的减少外部存储的操作.</span><br><span class="line"></span><br><span class="line">根据磁盘局部原理, 在读取当前数据时, 未来一段时间内, 可能会用到附近的数据</span><br><span class="line">(猜测是因为顺序写的原因)</span><br><span class="line"></span><br><span class="line">比如当我从磁盘读取数据5时, 可能会将数据4,数据6一起读取进内存(根据页大小)</span><br><span class="line">这样, 当我需要数据4时就能直接在内存里面获取了. 从而减少了外部存储的操作.</span><br><span class="line">提高了效率, 及时我不需要数据4, 我读取外部存储的耗时成本是一样.</span><br><span class="line"></span><br><span class="line">当内存不足时(进程申请的内存), 会根据LRU(最近最少使用算法)释放掉一些cache</span><br></pre></td></tr></table></figure></p>
+<p>buffer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">系统A发送数据时, 系统B会将收到的数据存放在buffer里面</span><br><span class="line">当系统B收到所有数据时, 将存在buffer里面的数据统一提交</span><br><span class="line">(这是因为带宽的原因, 无法将所有的数据一次发送, 只能一点点的发送)</span><br></pre></td></tr></table></figure></p>
+<h1 id="现场面"><a href="#现场面" class="headerlink" title="现场面"></a>现场面</h1><p>上来两个面试官.</p>
+<h2 id="面试官1"><a href="#面试官1" class="headerlink" title="面试官1"></a>面试官1</h2><h3 id="数组和链表的区别"><a href="#数组和链表的区别" class="headerlink" title="数组和链表的区别"></a>数组和链表的区别</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">数组是一种逻辑结构, 链表是一种存储结构, 链表对应的应该是顺序表</span><br><span class="line"></span><br><span class="line">可以使用链表/顺序表的存储结构实现数组</span><br></pre></td></tr></table></figure>
+<h3 id="数组和链表的场景"><a href="#数组和链表的场景" class="headerlink" title="数组和链表的场景"></a>数组和链表的场景</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">数组的元素大小相同, 可以通过数组第一个元素的地址计算出数组内任意个元素的地址, 所以能够实现随机访问</span><br><span class="line">链表因为需要由前一个元素才能找到后一个元素, 所以只能通过遍历来寻找元素</span><br><span class="line"></span><br><span class="line">数组因为使用前需要声明大小, 所以在使用时会存在上限问题</span><br><span class="line">链表因为每个元素有一个指向下一个元素的指针, 所以理论上上限为内存大小</span><br><span class="line"></span><br><span class="line">数组插入元素时, 如果不是最后一个元素, 需要将元素一个个的后移, 然后插入新元素</span><br><span class="line">链表插入元素时, 只需修改前一个元素并将插入元素的指针指向下一个元素即可, 效率非常高</span><br><span class="line"></span><br><span class="line">数组适合大量的随机访问, 只追加不修改的方式</span><br><span class="line">链表适合大量的写操作和顺序遍历</span><br></pre></td></tr></table></figure>
+<h3 id="redis的LIST结构如何实现快速查询和删除"><a href="#redis的LIST结构如何实现快速查询和删除" class="headerlink" title="redis的LIST结构如何实现快速查询和删除"></a>redis的LIST结构如何实现快速查询和删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不知</span><br></pre></td></tr></table></figure>
+<h3 id="redis的sorted-set如何实现一个订单过期功能"><a href="#redis的sorted-set如何实现一个订单过期功能" class="headerlink" title="redis的sorted set如何实现一个订单过期功能"></a>redis的sorted set如何实现一个订单过期功能</h3><p>方案1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">将订单号设置为KEY, 超时时间设置为score.</span><br><span class="line">这样排序, 时间最短的在最前面, 然后使用一个线程每隔一段时间去检查一次.</span><br><span class="line">发现订单过期时修改数据库状态</span><br><span class="line"></span><br><span class="line">只是觉得这个方法很浪费时间, 大量重复没有意义的动作.</span><br><span class="line">没想到面试官说很多公司就是使用这种方式实现的.</span><br><span class="line">算是瞎猫碰到死耗子</span><br></pre></td></tr></table></figure></p>
+<p>方案2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用redis的ttl, 当KEY过期后, 通过redis事件通知来修改数据库状态.</span><br><span class="line">参考https://redis.io/topics/notifications</span><br></pre></td></tr></table></figure></p>
+<p>方案3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">使用redis的ttl, 当KEY过期后, 订单删除</span><br><span class="line">同时在数据库添加一个订单过期的时间.</span><br><span class="line">这样可以通过时间范围来过滤一个未支付的订单.</span><br><span class="line"></span><br><span class="line">有个问题, 定单通常都是有状态属性的</span><br><span class="line">这样什么时候, 什么方式去更新这个状态呢</span><br><span class="line"></span><br><span class="line">我的想法应该是未支付状态, 通过过期时间来判断这个订单是否失效</span><br><span class="line">从使用角度看带来麻烦, 但是效率高, 较稳定</span><br></pre></td></tr></table></figure></p>
+<h3 id="数据库的隔离级别-什么是不可重复度读"><a href="#数据库的隔离级别-什么是不可重复度读" class="headerlink" title="数据库的隔离级别, 什么是不可重复度读"></a>数据库的隔离级别, 什么是不可重复度读</h3><p>并发导致的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">脏读:</span><br><span class="line">事物A修改数据, 事物B读取数据, 事物A回滚数据, 事物B读取的数据是错的</span><br><span class="line"></span><br><span class="line">不可重复读:</span><br><span class="line">事物A读取数据, 事物B修改数据, 事物A又读取数据, 发现数据和第一个读到的不一样</span><br><span class="line"></span><br><span class="line">幻读:</span><br><span class="line">事物A过滤数据, 事物B插入/删除数据, 事物A发现遗漏了数据</span><br><span class="line">(幻读和不可重复读的区别在于, 修改和插入/删除)</span><br></pre></td></tr></table></figure>
+<p>事物隔离级别:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">读未提交, 接受脏读, 不可重复读, 幻读, 高效率, 低安全</span><br><span class="line">读已提交, 接受不可重读读, 幻读</span><br><span class="line">可重复读, 接受幻读, 默认</span><br><span class="line">串行化, 所有事物依次执行, 低效率, 高安全</span><br></pre></td></tr></table></figure></p>
+<p>不可重复度实现:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">其实不清楚, 做个大胆的假设, 当事务修改数据时, COPY一个副本, 避免修改原始数据</span><br><span class="line">面试官回答差不多, 使用的是数据版本控制</span><br></pre></td></tr></table></figure></p>
+<h3 id="一个二叉树的遍历思路"><a href="#一个二叉树的遍历思路" class="headerlink" title="一个二叉树的遍历思路"></a>一个二叉树的遍历思路</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      A</span><br><span class="line">   B      C</span><br><span class="line">D    E  F   G</span><br></pre></td></tr></table></figure>
+<p>要求输出ABCDEFG</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不知</span><br></pre></td></tr></table></figure>
+<h2 id="面试官2"><a href="#面试官2" class="headerlink" title="面试官2"></a>面试官2</h2><h3 id="redis的雪崩和穿透以及预防手段"><a href="#redis的雪崩和穿透以及预防手段" class="headerlink" title="redis的雪崩和穿透以及预防手段"></a>redis的雪崩和穿透以及预防手段</h3><p>穿透<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">redis作为缓存是为了分担mysql的压力, 如果用户访问了大量没有缓存到的数据.</span><br><span class="line"></span><br><span class="line">请求会直接跑到mysql层, 导致应用响应很慢.</span><br><span class="line"></span><br><span class="line">在应用层做判断, 使用布隆过滤器</span><br></pre></td></tr></table></figure></p>
+<p>击穿<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当key过期时, 大量的并发请求会瞬间压垮数据库</span><br><span class="line"></span><br><span class="line">使用互斥锁/队列来避免突发大量读数据库的请求</span><br></pre></td></tr></table></figure></p>
+<p>雪崩<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当一批key的ttl时间过期, 会导致redis的缓存大量的失效</span><br><span class="line"></span><br><span class="line">请求全部跑到mysql上, 结果就是应用响应慢.</span><br><span class="line"></span><br><span class="line">1. 将key的ttl设置为不同的时间, 或者不设置ttl时间(为啥要设置, 使用LRU不好吗)</span><br><span class="line">2. 当一个缓存过期时请求二级缓存, 一级缓存的时间短, 二级缓存时间长</span><br></pre></td></tr></table></figure></p>
+<h3 id="lvs的三种模式"><a href="#lvs的三种模式" class="headerlink" title="lvs的三种模式"></a>lvs的三种模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上同...</span><br></pre></td></tr></table></figure>
+<h3 id="k8s的架构"><a href="#k8s的架构" class="headerlink" title="k8s的架构"></a>k8s的架构</h3><p><img src="2020-05-01-16-25-21.png" alt></p>
+<p><img src="2020-05-01-16-25-31.png" alt></p>
+<p><img src="2020-05-01-16-28-16.png" alt></p>
+<p><img src="2020-05-01-17-31-41.png" alt></p>
+<p><img src="2020-05-01-17-37-18.png" alt></p>
+<h3 id="mysql的架构"><a href="#mysql的架构" class="headerlink" title="mysql的架构"></a>mysql的架构</h3><p><img src="2020-05-01-16-24-13.png" alt></p>
+<h3 id="openresty请求的生命周期"><a href="#openresty请求的生命周期" class="headerlink" title="openresty请求的生命周期"></a>openresty请求的生命周期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不知</span><br></pre></td></tr></table></figure>
+<h3 id="写一个最大公约数-冒泡排序"><a href="#写一个最大公约数-冒泡排序" class="headerlink" title="写一个最大公约数/冒泡排序"></a>写一个最大公约数/冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不知</span><br></pre></td></tr></table></figure>
+<h3 id="七层负载均衡和四层负载均衡区别"><a href="#七层负载均衡和四层负载均衡区别" class="headerlink" title="七层负载均衡和四层负载均衡区别"></a>七层负载均衡和四层负载均衡区别</h3><p><img src="四七层代理时序图.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">七层代理因为需要将数据包提交给应用层, 所以效率会慢.</span><br><span class="line">并且七层代理能根据请求的信息进行相应策略.</span><br><span class="line"></span><br><span class="line">面试官让我画出七层代理和四层代理在TCP的时序图.</span><br><span class="line">讲了七层代理, 需要先和nginx建立连接, 然后nginx再和后端建立连接.</span><br><span class="line">后来想想哦, 这里client先和nginx建立连接没问题.</span><br><span class="line"></span><br><span class="line">但不是client和nginx建立连接后, nginx立马和后端建立连接</span><br><span class="line">而是client发出了七层的请求, 然后nginx根据七层的数据进行判断和哪个后台建立连接的.</span><br><span class="line"></span><br><span class="line">而四层负载均衡是居于tcp的数据包的转发, 直接修改数据包, 效率会高出很多.</span><br></pre></td></tr></table></figure>
+<h1 id="总结-吐槽"><a href="#总结-吐槽" class="headerlink" title="总结/吐槽"></a>总结/吐槽</h1><h3 id="从面试者的角度看"><a href="#从面试者的角度看" class="headerlink" title="从面试者的角度看"></a>从面试者的角度看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">面完之后心里也有低了, 凉凉.</span><br><span class="line"></span><br><span class="line">HR小姐姐直接让我回了, 送都不送一下(世风日下, 人走茶凉), </span><br><span class="line">(小姐姐后来特意和我解释了, 因为正在打电话, 不想让我久等)</span><br><span class="line"></span><br><span class="line">主要问题还是积累不够吧, 工作场景的不同, 无法深入研究, 这个无解.</span><br><span class="line">但是数据结构这种通用和基础性的原理的还可以深入学习一下</span><br><span class="line"></span><br><span class="line">结束时, 问了一下面试官有什么建议吗.</span><br><span class="line">回答, 可以看看源码, 感觉有点敷衍...</span><br></pre></td></tr></table></figure>
+<h3 id="从面试官的角度看"><a href="#从面试官的角度看" class="headerlink" title="从面试官的角度看"></a>从面试官的角度看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">反正面试没过, 我肯定是不开心的, 坐车4小时, 来回8小时, 心累啊(可能存在不客观)</span><br><span class="line"></span><br><span class="line">面试过程中, 感觉没有问之前工作中做过什么, 达到了什么效果.</span><br><span class="line">(白白的准备了一堆的资料)</span><br><span class="line"></span><br><span class="line">整个面试过程就是, 大概就是你知道这个吗, 这个原理是什么</span><br><span class="line">完全是一问一答的方式, 不过也OK了, 目前主流的都是这样调调.</span><br><span class="line">(YY一下, 如果多背一些面试题, 是不是会更容易通过面试)</span><br><span class="line"></span><br><span class="line">而且良心的说, **两个面试官都挺不错**, 有时你回答不来, 也会给一些提示.</span><br><span class="line">但是相对来说, 我觉得第一个面试官感觉更好一些.</span><br><span class="line">因为我在和第一个面试官沟通的时候, 我们是有来有回的.</span><br><span class="line">我回答完问题后, 他会给出一些反馈.</span><br><span class="line"></span><br><span class="line">而第二个面试官整个过程就面无表情, 完全没有交互</span><br><span class="line">是对我的长相有意见(我可是有戴口罩的啊???)</span><br></pre></td></tr></table></figure>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">这是第二次面金山了, 又GET到了新知识.</span><br><span class="line">虽然没有完成大目标, 但也有一些小收获.</span><br><span class="line"></span><br><span class="line">还记得第一次在一个月黑风高的晚上.</span><br><span class="line">当时电面, 金山的面试官问了两个问题.</span><br><span class="line">shell的数组(不知道, shell还用数组???) </span><br><span class="line">单例模式(不知道, 还没看到单例模式)</span><br><span class="line"></span><br><span class="line">然后就没有然后了, 相比第一次, 应该有了很大的进步.</span><br><span class="line">再积累积累, 下次再来, 加油!</span><br></pre></td></tr></table></figure>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">在和HR小姐姐的沟通下, 获得了一些面试的反馈.</span><br><span class="line">这里我要认真的表扬下, 是真的很感谢.</span><br><span class="line"></span><br><span class="line">以下是反馈信息:</span><br><span class="line"></span><br><span class="line">如果把运维分为下面几个阶段, 我目前还处于Ops到DevOps的过渡阶段</span><br><span class="line">Ops =&gt; DevOps =&gt; DataOps =&gt; SRE =&gt; AIOps</span><br><span class="line">       ^</span><br><span class="line"></span><br><span class="line">有以下建议：</span><br><span class="line">1. 运维不能只是会简单部署, 还要深入理解组件原理, 这样才能快速处理问题或者避免问题。</span><br><span class="line">2. DevOps方法论, 开发驱动运维, 不能局限于会简单的写python层面</span><br><span class="line">   深度上需要深刻的掌握一门域名, 广度上需要熟悉golang、lua、rust等更多语言。</span><br><span class="line"></span><br><span class="line">3. 培养亿级流量思维, 集群化、高可用, CAP原理这些在分布式系统里头都是需要深入考虑的。</span><br><span class="line">4. 基于Mikey金字塔构建运维体系, 监控是基础, 没有监控, 可靠运维就是空谈, 要从底层向上构建, 打牢基础。</span><br><span class="line"></span><br><span class="line">推荐书籍：</span><br><span class="line">1. 「SRE: Google 运维解密」</span><br><span class="line">2. 「SRE生存指南」</span><br><span class="line">3. 「亿级流量网站架构核心技术」</span><br><span class="line">4. 「MySQL运维内参」</span><br><span class="line">5. 「MySQL技术内幕」</span><br><span class="line">6. 「Kubernetes权威指南」</span><br><span class="line">7. 「Redis设计与实现」</span><br><span class="line">8. 「深入理解Nginx」</span><br><span class="line">9. 「OpenStack设计与实现」</span><br><span class="line">10.  ......</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">虚心的接受建议</span><br><span class="line">但是这个运维阶段有点不同的看法</span><br><span class="line"></span><br><span class="line">devops是目的, sre/dataops/aiops都是手段</span><br><span class="line">devops的思想是快速,高质量的交付产品给用户.</span><br><span class="line">sre只是devops中运营的一环, dataops/aiops是帮助团队提交效率和稳定的方法</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+            <a href="/tags/运维开发/" rel="tag"># 运维开发</a>
+          
+            <a href="/tags/复盘/" rel="tag"># 复盘</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/02/Ops/监控/业务监控/服务端业务异常日志监控/" rel="prev" title="服务端业务异常日志监控">
+                服务端业务异常日志监控 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZhiWei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前传"><span class="nav-number">2.</span> <span class="nav-text">前传</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#电面1"><span class="nav-number">2.1.</span> <span class="nav-text">电面1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自我介绍"><span class="nav-number">2.1.1.</span> <span class="nav-text">自我介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对K8S的了解"><span class="nav-number">2.1.2.</span> <span class="nav-text">对K8S的了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI模型"><span class="nav-number">2.1.3.</span> <span class="nav-text">OSI模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vxlan的原理"><span class="nav-number">2.1.4.</span> <span class="nav-text">vxlan的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker的原理"><span class="nav-number">2.1.5.</span> <span class="nav-text">docker的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ELK的索引管理和优化"><span class="nav-number">2.1.6.</span> <span class="nav-text">ELK的索引管理和优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电面2"><span class="nav-number">2.2.</span> <span class="nav-text">电面2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自我介绍-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">自我介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七层-四层负载均衡区别以及LVS的了解"><span class="nav-number">2.2.2.</span> <span class="nav-text">七层/四层负载均衡区别以及LVS的了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka吞吐量高的原因"><span class="nav-number">2.2.3.</span> <span class="nav-text">kafka吞吐量高的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache-buffer"><span class="nav-number">2.2.4.</span> <span class="nav-text">cache/buffer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#现场面"><span class="nav-number">3.</span> <span class="nav-text">现场面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试官1"><span class="nav-number">3.1.</span> <span class="nav-text">面试官1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组和链表的区别"><span class="nav-number">3.1.1.</span> <span class="nav-text">数组和链表的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组和链表的场景"><span class="nav-number">3.1.2.</span> <span class="nav-text">数组和链表的场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis的LIST结构如何实现快速查询和删除"><span class="nav-number">3.1.3.</span> <span class="nav-text">redis的LIST结构如何实现快速查询和删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis的sorted-set如何实现一个订单过期功能"><span class="nav-number">3.1.4.</span> <span class="nav-text">redis的sorted set如何实现一个订单过期功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的隔离级别-什么是不可重复度读"><span class="nav-number">3.1.5.</span> <span class="nav-text">数据库的隔离级别, 什么是不可重复度读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个二叉树的遍历思路"><span class="nav-number">3.1.6.</span> <span class="nav-text">一个二叉树的遍历思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试官2"><span class="nav-number">3.2.</span> <span class="nav-text">面试官2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis的雪崩和穿透以及预防手段"><span class="nav-number">3.2.1.</span> <span class="nav-text">redis的雪崩和穿透以及预防手段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lvs的三种模式"><span class="nav-number">3.2.2.</span> <span class="nav-text">lvs的三种模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k8s的架构"><span class="nav-number">3.2.3.</span> <span class="nav-text">k8s的架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql的架构"><span class="nav-number">3.2.4.</span> <span class="nav-text">mysql的架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openresty请求的生命周期"><span class="nav-number">3.2.5.</span> <span class="nav-text">openresty请求的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写一个最大公约数-冒泡排序"><span class="nav-number">3.2.6.</span> <span class="nav-text">写一个最大公约数/冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七层负载均衡和四层负载均衡区别"><span class="nav-number">3.2.7.</span> <span class="nav-text">七层负载均衡和四层负载均衡区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结-吐槽"><span class="nav-number">4.</span> <span class="nav-text">总结/吐槽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从面试者的角度看"><span class="nav-number">4.0.1.</span> <span class="nav-text">从面试者的角度看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从面试官的角度看"><span class="nav-number">4.0.2.</span> <span class="nav-text">从面试官的角度看</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhiWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

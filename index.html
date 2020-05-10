@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/04/业务的自动化部署/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -284,7 +284,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/04/业务的自动化部署/" itemprop="url">业务的自动化部署</a></h2>
+                <a class="post-title-link" href="/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/" itemprop="url">nginx的mirror模块请求返回400状态</a></h2>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-04T15:04:19+08:00">
-                2020-05-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-10T09:37:48+08:00">
+                2020-05-10
               </time>
             
 
@@ -319,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ops/" itemprop="url" rel="index">
-                    <span itemprop="name">Ops</span>
+                  <a href="/categories/复盘/" itemprop="url" rel="index">
+                    <span itemprop="name">复盘</span>
                   </a>
                 </span>
 
@@ -330,19 +330,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ops/监控/" itemprop="url" rel="index">
-                    <span itemprop="name">监控</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ops/监控/业务监控/" itemprop="url" rel="index">
-                    <span itemprop="name">业务监控</span>
+                  <a href="/categories/复盘/问题/" itemprop="url" rel="index">
+                    <span itemprop="name">问题</span>
                   </a>
                 </span>
 
@@ -379,14 +368,18 @@
 
       
         
-          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>游戏行业的滚服需求, 服务之间相互独立<br>每天有大量的服务部署需求<br>并且在保证稳定的前提下尽可能的提高资源利用率</p>
-<p>而且还有个问题, 我们没有购买主机的权限<br>需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付<br>这就导致我们必须要预留一定数量的主机<br>来避免支付订单响应不及时导致的运营事故</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>我们这里解决的是如何实现自动部署<br>可能一些老司机说, 自动部署嘛, 这还不简单<br>写个页面, 然后调用Ansible一下子就完成了.</p>
-<p>但是我们想要做的是完全自动化<br>整个流程无人介入(不出问题的情况下)</p>
-<p>PS: 只是部署, 不负责发布上线</p>
+          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>突然被抓来协助大数据的上报网关(openresty)</p>
+<p>client -&gt; OpenResty -&gt; Kafka -&gt; ClickHouse</p>
+<p>这里的OpenResty负责数据的兼容, 过滤, 路由</p>
+<p>因为需要经常的修改OpenResty的逻辑配合数据分析这边的需求<br>导致改动容易出现问题, 需要搞个测试环境.<br>通过测试环境的验证后, 在更新到正式环境</p>
+<p>实施方案是使用nginx的mirror模块将请求镜像到测试站点.<br>同样的代码和配置, 通过环境变量来区分生产和测试环境</p>
+<p>大概是这样的.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">                                (不返回client)</span><br><span class="line">client &lt;-------------&gt; nginx &lt;-------------&gt; mirror</span><br></pre></td></tr></table></figure>
+<p>那么问题来了<br>在实施中, 请求主站点时, 镜像站点也能收到请求<br>但一直现实status_code 400, 从表现上来看像是POST的数据丢失了.<br>在nginx的log_format把<code>$request_body</code>参数加上, 发现确实POST数据没有.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.19.0.1 - [08/May/2020:06:35:09] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br><span class="line">172.19.0.1 - [08/May/2020:07:01:09] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br><span class="line">172.19.0.1 - [08/May/2020:07:02:43] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/04/业务的自动化部署/#more" rel="contents">
+            <a class="btn" href="/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -437,7 +430,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/03/客户端业务异常上报监控/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/04/Ops/自动化/业务的自动化部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -456,7 +449,168 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/03/客户端业务异常上报监控/" itemprop="url">客户端业务异常上报监控</a></h2>
+                <a class="post-title-link" href="/2020/05/04/Ops/自动化/业务的自动化部署/" itemprop="url">业务的自动化部署</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-04T15:04:19+08:00">
+                2020-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ops/" itemprop="url" rel="index">
+                    <span itemprop="name">Ops</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ops/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>游戏行业的滚服需求, 服务之间相互独立<br>每天有大量的服务部署需求<br>并且在保证<code>稳定</code>的前提下尽可能的提高<code>资源利用率</code></p>
+<p>而且还有个问题, 我们没有购买主机的权限<br>需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付<br>这就导致需要预留一定数量的主机, 避免支付响应不及时引发的运营事故</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>我们这里解决问题的是如何实现自动部署<br>可能一些老司机说, 自动部署嘛, 这还不简单<br>写个页面, 然后调用Ansible一下子就完成了.</p>
+<p>但是我们想要做的是完全自动化<br>整个流程无人介入(不出问题的情况下)</p>
+<p>PS: 只是部署, 不负责发布上线</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/04/Ops/自动化/业务的自动化部署/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/03/Ops/监控/业务监控/客户端业务异常上报监控/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/03/Ops/监控/业务监控/客户端业务异常上报监控/" itemprop="url">客户端业务异常上报监控</a></h2>
         
 
         <div class="post-meta">
@@ -562,7 +716,7 @@
 <p>看图…<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/03/客户端业务异常上报监控/#more" rel="contents">
+            <a class="btn" href="/2020/05/03/Ops/监控/业务监控/客户端业务异常上报监控/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -613,7 +767,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/02/服务端业务异常日志监控/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/02/Ops/监控/业务监控/服务端业务异常日志监控/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -632,7 +786,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/02/服务端业务异常日志监控/" itemprop="url">服务端业务异常日志监控</a></h2>
+                <a class="post-title-link" href="/2020/05/02/Ops/监控/业务监控/服务端业务异常日志监控/" itemprop="url">服务端业务异常日志监控</a></h2>
         
 
         <div class="post-meta">
@@ -731,7 +885,7 @@
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">一般情况下我们都是走这样的流程</span><br><span class="line"></span><br><span class="line">1. 业务更新版本</span><br><span class="line">2. 等待用户反馈问题</span><br><span class="line">3. 判断客户端还是服务端</span><br><span class="line">4. 根据用户信息查看日志</span><br><span class="line">5. 修复BUG更新版本</span><br><span class="line"></span><br><span class="line">解决问题被动而且效率低下.</span><br><span class="line">大量体验不好的用户直接流失.</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/02/服务端业务异常日志监控/#more" rel="contents">
+            <a class="btn" href="/2020/05/02/Ops/监控/业务监控/服务端业务异常日志监控/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -782,7 +936,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/01/珠海金山办公运维开发面试复盘/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -801,7 +955,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/01/珠海金山办公运维开发面试复盘/" itemprop="url">珠海金山办公运维开发面试复盘</a></h2>
+                <a class="post-title-link" href="/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/" itemprop="url">珠海金山办公运维开发面试复盘</a></h2>
         
 
         <div class="post-meta">
@@ -893,7 +1047,7 @@
 <h3 id="对K8S的了解"><a href="#对K8S的了解" class="headerlink" title="对K8S的了解"></a>对K8S的了解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">etcd, 持久化的存储</span><br><span class="line">api-server, 组件通信的网关</span><br><span class="line">调度器, 针对资源, 亲和性的调度</span><br><span class="line">控制器, 根据状态, 策略进行变更控制</span><br><span class="line">kubelet, 负责对本地执行具体的任务</span><br><span class="line">kube-proxy, 对请求进行负载均衡</span><br><span class="line">service, pod的抽象, 对外提供统一的功能</span><br><span class="line">pod, container的抽象, 共享资源</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/01/珠海金山办公运维开发面试复盘/#more" rel="contents">
+            <a class="btn" href="/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -977,7 +1131,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -988,7 +1142,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -999,7 +1153,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
