@@ -88,7 +88,7 @@
 <meta property="og:description" content="问题背景突然被抓来协助大数据的上报网关(OpenResty) client -&amp;gt; OpenResty -&amp;gt; Kafka -&amp;gt; ClickHouse 这里的OpenResty负责数据的兼容, 过滤, 路由 因为需要经常的修改OpenResty的逻辑配合数据分析这边的需求导致改动容易出现问题, 需要搞个测试环境.通过测试环境的验证后, 在更新到正式环境 实施方案是使用nginx的mi">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhiwei.show/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/2020-05-10-11-02-01.png">
-<meta property="og:updated_time" content="2020-05-10T09:47:38.822Z">
+<meta property="og:updated_time" content="2020-05-21T13:25:01.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx的mirror模块请求返回400状态">
 <meta name="twitter:description" content="问题背景突然被抓来协助大数据的上报网关(OpenResty) client -&amp;gt; OpenResty -&amp;gt; Kafka -&amp;gt; ClickHouse 这里的OpenResty负责数据的兼容, 过滤, 路由 因为需要经常的修改OpenResty的逻辑配合数据分析这边的需求导致改动容易出现问题, 需要搞个测试环境.通过测试环境的验证后, 在更新到正式环境 实施方案是使用nginx的mi">
@@ -288,6 +288,7 @@
         <div class="post-meta">
           <span class="post-time">
             
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -395,7 +396,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;400 The plain HTTP request was sent to HTTPS port&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;center&gt;</span><br><span class="line">		&lt;h1&gt;400 Bad Request&lt;/h1&gt;</span><br><span class="line">	&lt;/center&gt;</span><br><span class="line">	&lt;center&gt;The plain HTTP request was sent to HTTPS port&lt;/center&gt;</span><br><span class="line">	&lt;hr&gt;</span><br><span class="line">	&lt;center&gt;OpenResty/1.15.8.3&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>镜像站点的配置和主站点是一致的, 都是基于ssl的.<br>而主站点里的mirror模块使用的是<code>proxy_pass http://127.0.0.1:8080$request_uri;</code></p>
 <p>至此问题定位完毕, 修复起来也就很简单了.</p>
-<h1 id="结果总结"><a href="#结果总结" class="headerlink" title="结果总结"></a>结果总结</h1><h2 id="细节问题"><a href="#细节问题" class="headerlink" title="细节问题"></a>细节问题</h2><p>配置文件是直接复制的, 所以没有注意到细节.</p>
+<h1 id="复盘总结"><a href="#复盘总结" class="headerlink" title="复盘总结"></a>复盘总结</h1><h2 id="细节问题"><a href="#细节问题" class="headerlink" title="细节问题"></a>细节问题</h2><p>配置文件是直接复制的, 所以没有注意到细节.</p>
 <h2 id="对http-status-code理解不深刻"><a href="#对http-status-code理解不深刻" class="headerlink" title="对http status_code理解不深刻"></a>对http status_code理解不深刻</h2><p>之前工作中一直碰到的400都是缺少参数导致服务器处理不了</p>
 <p>其实真正的意思是说client的请求错误, 不仅仅是参数, 经验主义啊.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">6.5.1.  400 Bad Request</span><br><span class="line"></span><br><span class="line">   The 400 (Bad Request) status code indicates that the server cannot or</span><br><span class="line">   will not process the request due to something that is perceived to be</span><br><span class="line">   a client error (e.g., malformed request syntax, invalid request</span><br><span class="line">   message framing, or deceptive request routing).</span><br></pre></td></tr></table></figure>
@@ -434,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/04/Ops/自动化/业务的自动化部署/" rel="next" title="业务的自动化部署">
-                <i class="fa fa-chevron-left"></i> 业务的自动化部署
+              <a href="/2020/05/01/复盘/面试/珠海金山办公运维开发面试复盘/" rel="next" title="珠海金山办公运维开发面试复盘">
+                <i class="fa fa-chevron-left"></i> 珠海金山办公运维开发面试复盘
               </a>
             
           </div>
@@ -443,6 +444,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/18/复盘/问题/Docker-Swarm尝试引发的并发问题/" rel="prev" title="Docker-Swarm尝试引发的并发问题">
+                Docker-Swarm尝试引发的并发问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -519,7 +524,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -530,7 +535,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -541,7 +546,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -574,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题背景"><span class="nav-number">1.</span> <span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路验证"><span class="nav-number">2.</span> <span class="nav-text">思路验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx的配置问题"><span class="nav-number">2.1.</span> <span class="nav-text">nginx的配置问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenResty的版本问题"><span class="nav-number">2.2.</span> <span class="nav-text">OpenResty的版本问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务配置的问题"><span class="nav-number">2.3.</span> <span class="nav-text">业务配置的问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包确认"><span class="nav-number">2.4.</span> <span class="nav-text">抓包确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题定位"><span class="nav-number">2.5.</span> <span class="nav-text">问题定位</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结果总结"><span class="nav-number">3.</span> <span class="nav-text">结果总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#细节问题"><span class="nav-number">3.1.</span> <span class="nav-text">细节问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对http-status-code理解不深刻"><span class="nav-number">3.2.</span> <span class="nav-text">对http status_code理解不深刻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从设计上来看"><span class="nav-number">3.3.</span> <span class="nav-text">从设计上来看</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题背景"><span class="nav-number">1.</span> <span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路验证"><span class="nav-number">2.</span> <span class="nav-text">思路验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx的配置问题"><span class="nav-number">2.1.</span> <span class="nav-text">nginx的配置问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenResty的版本问题"><span class="nav-number">2.2.</span> <span class="nav-text">OpenResty的版本问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务配置的问题"><span class="nav-number">2.3.</span> <span class="nav-text">业务配置的问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包确认"><span class="nav-number">2.4.</span> <span class="nav-text">抓包确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题定位"><span class="nav-number">2.5.</span> <span class="nav-text">问题定位</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复盘总结"><span class="nav-number">3.</span> <span class="nav-text">复盘总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#细节问题"><span class="nav-number">3.1.</span> <span class="nav-text">细节问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对http-status-code理解不深刻"><span class="nav-number">3.2.</span> <span class="nav-text">对http status_code理解不深刻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从设计上来看"><span class="nav-number">3.3.</span> <span class="nav-text">从设计上来看</span></a></li></ol></li></ol></div>
             
 
           </div>
