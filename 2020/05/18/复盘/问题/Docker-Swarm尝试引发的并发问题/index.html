@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://zhiwei.show/2020/05/18/复盘/问题/Docker-Swarm尝试引发的并发问题/2020-05-18-20-55-28.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/18/复盘/问题/Docker-Swarm尝试引发的并发问题/2020-05-18-22-24-37.png">
 <meta property="og:image" content="https://zhiwei.show/2020/05/18/复盘/问题/Docker-Swarm尝试引发的并发问题/2020-05-19-22-27-22.png">
-<meta property="og:updated_time" content="2020-05-22T15:26:35.498Z">
+<meta property="og:updated_time" content="2020-06-01T11:58:14.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker-Swarm尝试引发的并发问题">
 <meta name="twitter:description" content="背景问题公司需要对用户的行为做分析所以在服务端上通过HTTP的方式上报数据 想要将上报数据的网关容器化了方面以后的维护和管理 因为节点少, 相对于K8S来说太重了.所以准备尝试一下Docker Swarm 没想到在测试环境没问题, 一上生产.结果立马出现了一大堆上报失败的错误 吓的我立马回滚了操作, 再慢慢来排查.">
@@ -397,14 +397,22 @@ HTTP1.1之后默认的都是</code>Connection: keep-alive`, 请求完等待一�
 <p>解决方法也很简单</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://backend;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>有点奇怪的是<code>proxy_set_header Connection &quot;&quot;;</code>是什么东西.<br>为什么要清空HTTP的<code>Connection</code>信息.</p>
-<p>带着好奇心, 翻了一下官网</p>
-<p>还挺难找的, 最后在<code>ntlm</code>指令上找到答案</p>
-<p>简单来说, 这是为了保证长连接的一个设置,<br>因为<code>ntlm</code>的验证需要需要upstream服务器和client的连接一致.<br>所以假如用户在HTTP的头部设置了<code>Connection: close</code>, 就会出现奇怪的问题.<br>这里直接将<code>Connection</code>清空, HTTP1.1默认会开启keep-alive</p>
+<p>带着好奇心, 问了一下google.<br>原来是避免客户端发起了<code>Connection Close</code>, 导致后端服务会和nginx直接断开连接.</p>
 <h2 id="TCP数据包时间过期问题"><a href="#TCP数据包时间过期问题" class="headerlink" title="TCP数据包时间过期问题"></a>TCP数据包时间过期问题</h2><p>讲了这么多, 还是没有弄清楚生产环境为什么会出问题.<br>因为无法在测试环境上复现, 所以再次切换到生产环境上了.<br>还好不是业务系统, 并且有数据有补报机制, 不然可不敢这么玩.</p>
 <p>切到生产上, 问题依旧, 赶紧使用tcpdump抓包, 然后还原</p>
 <p><img src="2020-05-19-22-27-22.png" alt></p>
-<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1><p>问题还未解决, 未完待续</p>
-<h1 id="复盘总结"><a href="#复盘总结" class="headerlink" title="复盘总结"></a>复盘总结</h1>
+<p>(不是原图, 原图几乎全是<code>TCP Out-Of-Order</code>)<br>发现全是<code>TCP Out-Of-Order</code>, 简单来说, 就是收到的TCP数据包的顺序不对.</p>
+<p>因为TCP收到数据包后需要校验确认, 来保证双方的可靠传输.<br>所以收到的TCP数据包顺序不对, 无法判断是真的数据丢失, 还是数据错乱.</p>
+<p>至于为什么会引起数据包顺序错误, 这个问题其实网上也有很多案例了.</p>
+<p>简单来说, 内核文件<code>/proc/sys/net/ipv4/tcp_tw_recycle</code>控制是否快速回收<code>TIMEWAIT</code>的socket<br>而TIMEWAIT则是用来避免网络上残留的数据影响了正常的通信.<br>对于同一个连接, 如果收到了<code>过期</code>的数据包就丢弃掉<br>TCP使用四元组(源IP,源PORT,目的IP,目的PORT)来表示一个连接的.</p>
+<p>开启<code>tcp_tw_recycle</code>后, TCP的四元组信息已经不匹配了, 所以只能通过源IP来判断<br>可以通过<code>/proc/sys/net/ipv4/tcp_tw_recycle</code>内核文件来控制是否检查同个源IP的数据包时间</p>
+<p>除了上面以外, 还有个关键的地方<br><code>docker swarm</code>使用了<code>ipvs snat</code>将所有的请求都变成一个源IP<br>而这些源IP收到数据包发现时间不同, 自然会产生丢弃, 最终导致数据无法传输.</p>
+<h1 id="复盘总结"><a href="#复盘总结" class="headerlink" title="复盘总结"></a>复盘总结</h1><ol>
+<li>本来查一个问题, 结果发现的问题越来越多.</li>
+<li>nginx的mirror是一个很好的生产排查工具, 就是要理解好</li>
+<li>基础性的原理对于排查的思路非常重要.</li>
+</ol>
+
       
     </div>
     
@@ -517,7 +525,7 @@ HTTP1.1之后默认的都是</code>Connection: keep-alive`, 请求完等待一�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -528,7 +536,7 @@ HTTP1.1之后默认的都是</code>Connection: keep-alive`, 请求完等待一�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -572,7 +580,7 @@ HTTP1.1之后默认的都是</code>Connection: keep-alive`, 请求完等待一�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景问题"><span class="nav-number">1.</span> <span class="nav-text">背景问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排查思路"><span class="nav-number">2.</span> <span class="nav-text">排查思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大量TIMEWAIT的问题"><span class="nav-number">2.1.</span> <span class="nav-text">大量TIMEWAIT的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP数据包时间过期问题"><span class="nav-number">2.2.</span> <span class="nav-text">TCP数据包时间过期问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">3.</span> <span class="nav-text">未完待续</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复盘总结"><span class="nav-number">4.</span> <span class="nav-text">复盘总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景问题"><span class="nav-number">1.</span> <span class="nav-text">背景问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排查思路"><span class="nav-number">2.</span> <span class="nav-text">排查思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大量TIMEWAIT的问题"><span class="nav-number">2.1.</span> <span class="nav-text">大量TIMEWAIT的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP数据包时间过期问题"><span class="nav-number">2.2.</span> <span class="nav-text">TCP数据包时间过期问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复盘总结"><span class="nav-number">3.</span> <span class="nav-text">复盘总结</span></a></li></ol></div>
             
 
           </div>

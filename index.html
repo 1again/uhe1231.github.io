@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/24/Blog权威指南/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/31/复盘/问题/saltstack-nginx-stream-proxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -282,15 +282,11 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/24/Blog权威指南/" itemprop="url">Blog权威指南</a></h2>
+                <a class="post-title-link" href="/2020/05/31/复盘/问题/saltstack-nginx-stream-proxy/" itemprop="url">使用nginx代理跨机房的saltstack使用</a></h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-            
-                <i class="fa fa-thumb-tack"></i>
-                <font color="7D26CD">置顶</font>
-                <span class="post-meta-divider">|</span>
             
             
               <span class="post-meta-item-icon">
@@ -299,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-24T17:14:22+08:00">
-                2020-05-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-31T20:54:53+08:00">
+                2020-05-31
               </time>
             
 
@@ -309,6 +305,39 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/" itemprop="url" rel="index">
+                    <span itemprop="name">复盘</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/问题/" itemprop="url" rel="index">
+                    <span itemprop="name">问题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -338,15 +367,177 @@
 
       
         
-          
-            <h1 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h1><p>游戏行业, 关注分布式系统, 自动化…</p>
-<p>之前写的文章都零零散散, 时断时续的, 整理ing…</p>
-<h1 id="三不写"><a href="#三不写" class="headerlink" title="三不写"></a>三不写</h1><p>网上转的不写</p>
-<p>非技术的不写</p>
-<p>没搞懂的不写</p>
-<h1 id="解释权"><a href="#解释权" class="headerlink" title="解释权"></a>解释权</h1><p>最终解释权归本人所有.</p>
+          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>我们是游戏研发公司, 需要和不同的发行商合作运营<br>而且很多发行商要求使用自己的服务器(毕竟自己控制更可靠)<br>所以就出现了这么一种情况</p>
+<p>业务不大, 但是不同云厂和区域的服务器不少.<br>并且我们使用SaltStack来管理主机的信息.<br>从主机的注册到作业的执行, 基本上是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt-master&lt;-----&gt;nginx-stream&lt;-----&gt;salt-minion</span><br></pre></td></tr></table></figure>
+<p>这里为啥使用nginx-stream, 而不是salt-syndic<br>主要是因为简单, 稳定, 而且salt-syndic无法针对单个minion下发job</p>
+<p>把nginx部署在<code>docker swarm</code>上<br>有一个区域就添加一个<code>docker worker</code>, 然后自动的部署上去了</p>
+<p>大概的思路是这样的, 然而在部署好了后使用<code>salt &#39;h72g9g19vr391.qcloud.hk&#39; test.ping</code><br>有时正常, 有时却返回超时</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/31/复盘/问题/saltstack-nginx-stream-proxy/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/24/复盘/问题/SaltStack的State错误的执行在其他主机上/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/24/复盘/问题/SaltStack的State错误的执行在其他主机上/" itemprop="url">SaltStack的State错误的执行在其他主机上</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-24T22:33:06+08:00">
+                2020-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/" itemprop="url" rel="index">
+                    <span itemprop="name">复盘</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/问题/" itemprop="url" rel="index">
+                    <span itemprop="name">问题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="背景问题"><a href="#背景问题" class="headerlink" title="背景问题"></a>背景问题</h1><p>我们的运维平台是基于SaltStack封装的任务系统.<br>在任务系统上将需要执行多个操作转为不同的state<br>SaltStack负责进行调度执行, Minion执行完了之后, 会将数据结果返回给master<br>而master则将结果保存在mongodb里面, 看图</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/24/复盘/问题/SaltStack的State错误的执行在其他主机上/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1757,168 +1948,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2019/12/20/Ops/自动化/业务的自动化部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhiWei">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZhiWei Show">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/20/Ops/自动化/业务的自动化部署/" itemprop="url">业务的自动化部署</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-20T10:33:02+08:00">
-                2019-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ops/" itemprop="url" rel="index">
-                    <span itemprop="name">Ops</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ops/自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>游戏行业的滚服需求, 服务之间相互独立<br>每天有大量的服务部署需求<br>并且在保证<code>稳定</code>的前提下尽可能的提高<code>资源利用率</code></p>
-<p>而且还有个问题, 我们没有购买主机的权限<br>需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付<br>这就导致需要预留一定数量的主机, 避免支付响应不及时引发的运营事故</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>我们这里解决问题的是如何实现自动部署<br>可能一些老司机说, 自动部署嘛, 这还不简单<br>写个页面, 然后调用Ansible一下子就完成了.</p>
-<p>但是我们想要做的是完全自动化<br>整个流程无人介入(不出问题的情况下)</p>
-<p>PS: 只是部署, 不负责发布上线</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/20/Ops/自动化/业务的自动化部署/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1969,7 +1998,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1980,7 +2009,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
