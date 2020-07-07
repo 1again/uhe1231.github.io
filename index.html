@@ -263,6 +263,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/06/26/复盘/总结/本地数据库迁移至云数据库的复盘总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/复盘/总结/本地数据库迁移至云数据库的复盘总结/" itemprop="url">本地数据库迁移至云数据库的复盘总结</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T17:15:02+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/" itemprop="url" rel="index">
+                    <span itemprop="name">复盘</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a>前戏</h1><p>其实一开始, 写这东西我其实是拒绝的.</p>
+<p>因为感觉没有多少技术含量, 没法体现出我牛逼的地方.</p>
+<p>后来想了想, 很多思想和方法还是挺不错, 可以深挖和借鉴.</p>
+<p>所以就记录下来, 方便以后回顾.</p>
+<p>以上.</p>
+<h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ol>
+<li>本地数据库使用5.6的MyISAM引擎.</li>
+<li>业务没有使用事务, 存储过程, join, 之类的常规关系数据查询</li>
+<li>直接粗暴简单的将用户数据序列化json后存在多个BLOBTEXT字段里.</li>
+<li>每个小时的整点进行锁表备份, 导致CPU的间隔性的突发.</li>
+</ol>
+<p>我们需要做的是在<code>效率</code>, <code>安全</code>, <code>成本</code>之间做平衡</p>
+<h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>在游戏服导量过后的一段时间.<br>需要定期的对游戏服进行迁移.<br>以提高资源使用率从而降低成本.</p>
+<p>数据库在本地时, 迁移需要对数据库进行导入导出操作<br>既不安全, 效率也低.</p>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>本地的数据库使用是的每小时备份.<br>在备份时会占用本地主机的资源, 影响用户体验.</p>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>本地数据库都是机械磁盘<br>同时大批量的停止和启动服务时会有大量的数据库操作<br>这些操作大都是磁盘的瓶颈, 拉长了维护的时间</p>
+<h2 id="回档"><a href="#回档" class="headerlink" title="回档"></a>回档</h2><p>当研发需要查询某个时间的数据时只能按每小时回档</p>
+<h2 id="崩溃"><a href="#崩溃" class="headerlink" title="崩溃"></a>崩溃</h2><p>没有对数据库做高可用, 当数据库崩溃时影响业务的数据安全</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/06/26/复盘/总结/本地数据库迁移至云数据库的复盘总结/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/31/复盘/问题/saltstack-nginx-stream-proxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1744,210 +1919,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/02/07/复盘/总结/2019年的工作整理总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhiWei">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZhiWei Show">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/07/复盘/总结/2019年的工作整理总结/" itemprop="url">2019年的工作整理总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-07T10:27:22+08:00">
-                2020-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/复盘/" itemprop="url" rel="index">
-                    <span itemprop="name">复盘</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/复盘/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="2019年终整理"><a href="#2019年终整理" class="headerlink" title="2019年终整理"></a>2019年终整理</h1><h2 id="运维平台"><a href="#运维平台" class="headerlink" title="运维平台"></a>运维平台</h2><h3 id="CMDB"><a href="#CMDB" class="headerlink" title="CMDB"></a>CMDB</h3><p>我们目前已经接入了腾讯云的dntg项目</p>
-<p>通过canal+kafka和额外的监控保证数据的及时性和准确性</p>
-<p>在多项目和多云环境上还需要进行迭代完善</p>
-<h3 id="维护功能"><a href="#维护功能" class="headerlink" title="维护功能"></a>维护功能</h3><p>正常的发展应该是 <code>手工-&gt;脚本-&gt;平台-&gt;自动化</code> 这个流程</p>
-<p>然而我们直接抛开了<code>平台</code>这个阶段, 直接做了自动化.</p>
-<p>导致我们后期的工作不好展开(主要是标准化的问题)</p>
-<p>所以要将标准化的优先级提高</p>
-<h3 id="巡检系统"><a href="#巡检系统" class="headerlink" title="巡检系统"></a>巡检系统</h3><p>主要是系统资源和业务状态的巡检</p>
-<p>目前基于openfalcon做的有些鸡肋, 无法通过时间筛选</p>
-<p>后期计划通过openfalcon+elasticsearch来实现</p>
-<h3 id="账单系统"><a href="#账单系统" class="headerlink" title="账单系统"></a>账单系统</h3><p>主要是基于腾讯云的账单进行分析实现的.</p>
-<p>所以在腾讯云的项目可以实现复用.</p>
-<p>但是在其他云环境上就需要再次开发了.</p>
-<h3 id="定时任务系统"><a href="#定时任务系统" class="headerlink" title="定时任务系统"></a>定时任务系统</h3><p>集中管理服务器的周期任务</p>
-<p>包括周期任务和定时任务</p>
-<p>这一块还在构思</p>
-<h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>目前来看已经是最优解</p>
-<p>剩下的是标准化和集成其他项目</p>
-<h3 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h3><p>目前一个人能在”半小时”内完成迁移计划(无论迁移规模大小)</p>
-<p>后期自动化主要是在于</p>
-<ol>
-<li><p>集成运维平台(需要标准化)</p>
-</li>
-<li><p>钉钉审批</p>
-</li>
-</ol>
-<h3 id="合服"><a href="#合服" class="headerlink" title="合服"></a>合服</h3><p>受限于业务架构和数据风险</p>
-<p>一直没有开始做自动化合服, 主要人力消耗点.</p>
-<p>需要在这块做一些突破.</p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>两块工作</p>
-<ol>
-<li><p>目前主要对维护脚本整理和标准化以便接入运维平台</p>
-</li>
-<li><p>通过jenkins实现交付, 通过钉钉审批实现协作</p>
-</li>
-</ol>
-<h2 id="告警监控"><a href="#告警监控" class="headerlink" title="告警监控"></a>告警监控</h2><h3 id="告警"><a href="#告警" class="headerlink" title="告警"></a>告警</h3><p>告警这块只是做了个简单的接口自用</p>
-<p>因为春节期间告警的故障导致没有空闲服务器部署.</p>
-<p>所以需要把告警的高可用做起来.</p>
-<h3 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h3><p>监控覆盖率和监控指标, 两个重点</p>
-<ol>
-<li><p>需要梳理下业务的整体架构和监控点.</p>
-</li>
-<li><p>监控系统的扩展性</p>
-</li>
-</ol>
-<h2 id="日志系统"><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h2><h3 id="业务日志"><a href="#业务日志" class="headerlink" title="业务日志"></a>业务日志</h3><p>目前已经搭建了业务的日志, 方便研发运营检索.</p>
-<p>没有对业务的日志进行监控和分析, 优先级较低</p>
-<h3 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h3><p>目前系统日志还未开始实施.</p>
-<p>目的是可以对系统日志监控, 发现一些潜在的问题</p>
-<p>及时处理避免业务的故障, 优先级较低</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1998,7 +1969,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2020,7 +1991,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
