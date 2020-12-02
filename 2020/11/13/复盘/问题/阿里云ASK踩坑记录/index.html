@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="背景Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费.这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本弹性扩展, 用多少算多少, 听起来确实很美好. Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 有点类似于网关 按我个人的理解, 网关有点倾向于 nginx的一些扩展, 通过标准的规则, 将站点信息抽象各位一个个的匹配规则 我们有一">
+<meta name="description" content="背景Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费. 这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本 弹性扩展, 用多少算多少, 听起来确实很美好. Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证 常用的是nginx实现的ingress, 通过规则映射, 将站点信息抽象各位一个个的匹配规则 接着, 我们">
 <meta name="keywords" content="blog ZhiWei Show">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云ASK踩坑记录">
 <meta property="og:url" content="https://zhiwei.show/2020/11/13/复盘/问题/阿里云ASK踩坑记录/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
-<meta property="og:description" content="背景Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费.这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本弹性扩展, 用多少算多少, 听起来确实很美好. Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 有点类似于网关 按我个人的理解, 网关有点倾向于 nginx的一些扩展, 通过标准的规则, 将站点信息抽象各位一个个的匹配规则 我们有一">
+<meta property="og:description" content="背景Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费. 这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本 弹性扩展, 用多少算多少, 听起来确实很美好. Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证 常用的是nginx实现的ingress, 通过规则映射, 将站点信息抽象各位一个个的匹配规则 接着, 我们">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhiwei.show/2020/11/13/复盘/问题/阿里云ASK踩坑记录/2020-12-01-19-12-22.png">
 <meta property="og:image" content="https://zhiwei.show/2020/11/13/复盘/问题/阿里云ASK踩坑记录/2020-12-01-19-13-02.png">
-<meta property="og:updated_time" content="2020-12-01T11:19:58.232Z">
+<meta property="og:updated_time" content="2020-12-02T12:14:29.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ASK踩坑记录">
-<meta name="twitter:description" content="背景Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费.这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本弹性扩展, 用多少算多少, 听起来确实很美好. Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 有点类似于网关 按我个人的理解, 网关有点倾向于 nginx的一些扩展, 通过标准的规则, 将站点信息抽象各位一个个的匹配规则 我们有一">
+<meta name="twitter:description" content="背景Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费. 这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本 弹性扩展, 用多少算多少, 听起来确实很美好. Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证 常用的是nginx实现的ingress, 通过规则映射, 将站点信息抽象各位一个个的匹配规则 接着, 我们">
 <meta name="twitter:image" content="https://zhiwei.show/2020/11/13/复盘/问题/阿里云ASK踩坑记录/2020-12-01-19-12-22.png">
 
 
@@ -367,16 +367,20 @@
       
 
       
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费.<br>这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本<br>弹性扩展, 用多少算多少, 听起来确实很美好.</p>
-<p>Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 有点类似于网关</p>
-<p>按我个人的理解, 网关有点倾向于</p>
-<p>nginx的一些扩展, 通过标准的规则, 将站点信息抽象各位一个个的匹配规则</p>
-<p>我们有一个前端打点上报需求, 准备用阿里云的ask来做.<br>只是一个很简单的通过http请求将数据上报至阿里云SLS的服务.<br>没有状态, 存储之类的需求, 所以用golang写了一个简单的api来解决.<br>万事俱备, 等待数据, 然而研发同学说不太对劲.</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>Ask是K8S的一种特殊扩展, 它屏蔽了node层, 按pod收费.</p>
+<p>这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本</p>
+<p>弹性扩展, 用多少算多少, 听起来确实很美好.</p>
+<p>Ingress本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证</p>
+<p>常用的是nginx实现的ingress, 通过规则映射, 将站点信息抽象各位一个个的匹配规则</p>
+<p>接着, 我们有一个前端打点上报需求, 准备用阿里云的ask来做.</p>
+<p>只是一个很简单的通过http请求将数据上报至阿里云SLS的服务.</p>
+<p>没有状态, 存储之类的需求, 所以用golang写了一个简单的api来解决.</p>
+<p>万事俱备, 等待数据, 然而研发同学说不太对劲.</p>
 <a id="more"></a>
 <h1 id="tls"><a href="#tls" class="headerlink" title="tls"></a>tls</h1><p>直接甩了个错误给我看.</p>
 <p><img src="2020-12-01-19-12-22.png" alt></p>
 <p>一看这信息, 很明显是证书问题.</p>
-<p>然后想起, 好像没有在ingress里面配置证书.</p>
+<p>然后想起, 好像确实没有在ingress里面配置证书.</p>
 <p>阿里云上的ingress可以直接在控制台添加证书信息.</p>
 <p>本质上是用了ingress的<code>nginx.ingress.kubernetes.io/auth-tls-secret</code>注解来实现</p>
 <p>直接在控制配置相关的tls信息即可, 然而现实很骨感.</p>
