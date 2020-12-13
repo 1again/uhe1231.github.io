@@ -356,27 +356,19 @@
 
       
         
-          
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>H5游戏研发公司<br>需要将H5项目的URL给合作方进行测试, </p>
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>H5游戏研发公司<br>需要将H5项目的URL给合作方进行测试, </p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>避免游戏地址被外部传播</p>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>使用openrestry作为反向代理<br>在后台通过对项目地址, 过期时间等信息进行对称加密.<br>生成一个url链接，然后发送给合作方</p>
 <p>合作方通过url请求时， 会对url参数中的加密信息进行解密<br>获取项目地址，过期时间等相关的信息</p>
 <p>如果当前时间大于过期时间则返回相应过期提示<br>如果当前时间小于过期时间则通过proxy_pass进行代理请求</p>
 <p>大致的情况就是这样了</p>
-<h2 id="续期"><a href="#续期" class="headerlink" title="续期"></a>续期</h2><p>一直相安无事， 突然有了一个需求<br>过期时间在生成链接时是确定的<br>但是合作方可能还想在体验一下</p>
-<p>简单的方法就是直接重新生成一个新链接<br>但是体验很不好， 因为合作方可能有多个人在测试<br>这样的话， 就需要将新链接通知到N个人<br>麻烦且低效</p>
-<h2 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h2><p>所以我们需要找到一个方法能对发出去的url进行续期操作<br>先想到了一个方法， 对每个生成的url都有一个id<br>续期时直接传送一个参数id来定位一个url, 然后进行相应的操作<br>这样openresty这边就需要构建一个数据库将所有的url记录下来</p>
-<p>原来openresty这只是一个过期的判断<br>如果这样修改则需要生成一堆的数据信息<br>能不能简单点</p>
-<h2 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h2><p>我们可以直接将url的加密信息作为key<br>存在redis中， 然后设置这个key的过期时间<br>这样既能满足需求，逻辑简单，改动也少</p>
-<p>合作方请求url逻辑</p>
-<p>在redis中查找是否有以“加密信息”为key的value<br>如果存在<br>    进行代理<br>否则<br>    将加密信息解密<br>    对过期时间进行判断<br>    如果过期<br>        返回过期提示<br>    否则<br>        进行代理</p>
-<p>设置url续期逻辑</p>
-<p>直接将url的加密信息作为redis的key存储起来，并设置相应的ttl</p>
-<h2 id="openresty请求阶段问题"><a href="#openresty请求阶段问题" class="headerlink" title="openresty请求阶段问题"></a>openresty请求阶段问题</h2><p>因为需要使用pass_proxy度项目url进行代理<br>所以我们需要通过set_by_lua来获取项目的URL地址<br>并且直接在set_by_lua中进行判断是否过期(就是个时间比较)</p>
-<p>但是在set_by_lua阶段不能访问redis的外部服务(因为性能)<br>所以最后我们先在set_by_lua阶段生成代理的url<br>然后在access_by_lua阶段判断请求的url是否过期</p>
-<p>以上是我们在外部测试网关管理的问题和总结</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/12/03/Dev/使用openresty构建的外部测试网关/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

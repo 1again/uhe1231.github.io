@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ZhiWei Show">
 <meta property="og:description" content="背景需求H5游戏研发公司需要将H5项目的URL给合作方进行测试,  问题避免游戏地址被外部传播 方案使用openrestry作为反向代理在后台通过对项目地址, 过期时间等信息进行对称加密.生成一个url链接，然后发送给合作方 合作方通过url请求时， 会对url参数中的加密信息进行解密获取项目地址，过期时间等相关的信息 如果当前时间大于过期时间则返回相应过期提示如果当前时间小于过期时间则通过pro">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-12-13T15:40:31.882Z">
+<meta property="og:updated_time" content="2020-12-13T15:42:59.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用openresty构建的外部测试网关">
 <meta name="twitter:description" content="背景需求H5游戏研发公司需要将H5项目的URL给合作方进行测试,  问题避免游戏地址被外部传播 方案使用openrestry作为反向代理在后台通过对项目地址, 过期时间等信息进行对称加密.生成一个url链接，然后发送给合作方 合作方通过url请求时， 会对url参数中的加密信息进行解密获取项目地址，过期时间等相关的信息 如果当前时间大于过期时间则返回相应过期提示如果当前时间小于过期时间则通过pro">
@@ -359,6 +359,7 @@
 <p>合作方通过url请求时， 会对url参数中的加密信息进行解密<br>获取项目地址，过期时间等相关的信息</p>
 <p>如果当前时间大于过期时间则返回相应过期提示<br>如果当前时间小于过期时间则通过proxy_pass进行代理请求</p>
 <p>大致的情况就是这样了</p>
+<a id="more"></a>
 <h2 id="续期"><a href="#续期" class="headerlink" title="续期"></a>续期</h2><p>一直相安无事， 突然有了一个需求<br>过期时间在生成链接时是确定的<br>但是合作方可能还想在体验一下</p>
 <p>简单的方法就是直接重新生成一个新链接<br>但是体验很不好， 因为合作方可能有多个人在测试<br>这样的话， 就需要将新链接通知到N个人<br>麻烦且低效</p>
 <h2 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h2><p>所以我们需要找到一个方法能对发出去的url进行续期操作<br>先想到了一个方法， 对每个生成的url都有一个id<br>续期时直接传送一个参数id来定位一个url, 然后进行相应的操作<br>这样openresty这边就需要构建一个数据库将所有的url记录下来</p>
