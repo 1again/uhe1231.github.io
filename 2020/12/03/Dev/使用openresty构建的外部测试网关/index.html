@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="总结,工作,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="2019年终整理运维平台CMDB我们目前已经接入了腾讯云的dntg项目 通过canal+kafka和额外的监控保证数据的及时性和准确性 在多项目和多云环境上还需要进行迭代完善 维护功能正常的发展应该是 手工-&amp;gt;脚本-&amp;gt;平台-&amp;gt;自动化 这个流程 然而我们直接抛开了平台这个阶段, 直接做了自动化. 导致我们后期的工作不好展开(主要是标准化的问题) 所以要将标准化的优先级提高 巡检系统">
-<meta name="keywords" content="总结,工作">
+<meta name="description" content="背景需求H5游戏研发公司需要将H5项目的URL给合作方进行测试,  问题避免游戏地址被外部传播 方案使用openrestry作为反向代理在后台通过对项目地址, 过期时间等信息进行对称加密.生成一个url链接，然后发送给合作方 合作方通过url请求时， 会对url参数中的加密信息进行解密获取项目地址，过期时间等相关的信息 如果当前时间大于过期时间则返回相应过期提示如果当前时间小于过期时间则通过pro">
+<meta name="keywords" content="blog ZhiWei Show">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019年的工作整理总结">
-<meta property="og:url" content="https://zhiwei.show/2020/02/07/复盘/总结/2019年的工作整理总结/index.html">
+<meta property="og:title" content="使用openresty构建的外部测试网关">
+<meta property="og:url" content="https://zhiwei.show/2020/12/03/Dev/使用openresty构建的外部测试网关/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
-<meta property="og:description" content="2019年终整理运维平台CMDB我们目前已经接入了腾讯云的dntg项目 通过canal+kafka和额外的监控保证数据的及时性和准确性 在多项目和多云环境上还需要进行迭代完善 维护功能正常的发展应该是 手工-&amp;gt;脚本-&amp;gt;平台-&amp;gt;自动化 这个流程 然而我们直接抛开了平台这个阶段, 直接做了自动化. 导致我们后期的工作不好展开(主要是标准化的问题) 所以要将标准化的优先级提高 巡检系统">
+<meta property="og:description" content="背景需求H5游戏研发公司需要将H5项目的URL给合作方进行测试,  问题避免游戏地址被外部传播 方案使用openrestry作为反向代理在后台通过对项目地址, 过期时间等信息进行对称加密.生成一个url链接，然后发送给合作方 合作方通过url请求时， 会对url参数中的加密信息进行解密获取项目地址，过期时间等相关的信息 如果当前时间大于过期时间则返回相应过期提示如果当前时间小于过期时间则通过pro">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-24T09:24:48.255Z">
+<meta property="og:updated_time" content="2020-12-13T15:40:31.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019年的工作整理总结">
-<meta name="twitter:description" content="2019年终整理运维平台CMDB我们目前已经接入了腾讯云的dntg项目 通过canal+kafka和额外的监控保证数据的及时性和准确性 在多项目和多云环境上还需要进行迭代完善 维护功能正常的发展应该是 手工-&amp;gt;脚本-&amp;gt;平台-&amp;gt;自动化 这个流程 然而我们直接抛开了平台这个阶段, 直接做了自动化. 导致我们后期的工作不好展开(主要是标准化的问题) 所以要将标准化的优先级提高 巡检系统">
+<meta name="twitter:title" content="使用openresty构建的外部测试网关">
+<meta name="twitter:description" content="背景需求H5游戏研发公司需要将H5项目的URL给合作方进行测试,  问题避免游戏地址被外部传播 方案使用openrestry作为反向代理在后台通过对项目地址, 过期时间等信息进行对称加密.生成一个url链接，然后发送给合作方 合作方通过url请求时， 会对url参数中的加密信息进行解密获取项目地址，过期时间等相关的信息 如果当前时间大于过期时间则返回相应过期提示如果当前时间小于过期时间则通过pro">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://zhiwei.show/2020/02/07/复盘/总结/2019年的工作整理总结/">
+  <link rel="canonical" href="https://zhiwei.show/2020/12/03/Dev/使用openresty构建的外部测试网关/">
 
 
 
 
 
-  <title>2019年的工作整理总结 | ZhiWei Show</title>
+  <title>使用openresty构建的外部测试网关 | ZhiWei Show</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/02/07/复盘/总结/2019年的工作整理总结/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/12/03/Dev/使用openresty构建的外部测试网关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -280,7 +280,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2019年的工作整理总结</h2>
+          <h2 class="post-title" itemprop="name headline">使用openresty构建的外部测试网关</h2>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-07T10:27:22+08:00">
-                2020-02-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-03T21:37:24+08:00">
+                2020-12-03
               </time>
             
 
@@ -316,19 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/复盘/" itemprop="url" rel="index">
-                    <span itemprop="name">复盘</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/复盘/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
+                  <a href="/categories/Dev/" itemprop="url" rel="index">
+                    <span itemprop="name">Dev</span>
                   </a>
                 </span>
 
@@ -364,57 +353,24 @@
       
 
       
-        <h1 id="2019年终整理"><a href="#2019年终整理" class="headerlink" title="2019年终整理"></a>2019年终整理</h1><h2 id="运维平台"><a href="#运维平台" class="headerlink" title="运维平台"></a>运维平台</h2><h3 id="CMDB"><a href="#CMDB" class="headerlink" title="CMDB"></a>CMDB</h3><p>我们目前已经接入了腾讯云的dntg项目</p>
-<p>通过canal+kafka和额外的监控保证数据的及时性和准确性</p>
-<p>在多项目和多云环境上还需要进行迭代完善</p>
-<h3 id="维护功能"><a href="#维护功能" class="headerlink" title="维护功能"></a>维护功能</h3><p>正常的发展应该是 <code>手工-&gt;脚本-&gt;平台-&gt;自动化</code> 这个流程</p>
-<p>然而我们直接抛开了<code>平台</code>这个阶段, 直接做了自动化.</p>
-<p>导致我们后期的工作不好展开(主要是标准化的问题)</p>
-<p>所以要将标准化的优先级提高</p>
-<h3 id="巡检系统"><a href="#巡检系统" class="headerlink" title="巡检系统"></a>巡检系统</h3><p>主要是系统资源和业务状态的巡检</p>
-<p>目前基于openfalcon做的有些鸡肋, 无法通过时间筛选</p>
-<p>后期计划通过openfalcon+elasticsearch来实现</p>
-<h3 id="账单系统"><a href="#账单系统" class="headerlink" title="账单系统"></a>账单系统</h3><p>主要是基于腾讯云的账单进行分析实现的.</p>
-<p>所以在腾讯云的项目可以实现复用.</p>
-<p>但是在其他云环境上就需要再次开发了.</p>
-<h3 id="定时任务系统"><a href="#定时任务系统" class="headerlink" title="定时任务系统"></a>定时任务系统</h3><p>集中管理服务器的周期任务</p>
-<p>包括周期任务和定时任务</p>
-<p>这一块还在构思</p>
-<h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>目前来看已经是最优解</p>
-<p>剩下的是标准化和集成其他项目</p>
-<h3 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h3><p>目前一个人能在”半小时”内完成迁移计划(无论迁移规模大小)</p>
-<p>后期自动化主要是在于</p>
-<ol>
-<li><p>集成运维平台(需要标准化)</p>
-</li>
-<li><p>钉钉审批</p>
-</li>
-</ol>
-<h3 id="合服"><a href="#合服" class="headerlink" title="合服"></a>合服</h3><p>受限于业务架构和数据风险</p>
-<p>一直没有开始做自动化合服, 主要人力消耗点.</p>
-<p>需要在这块做一些突破.</p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>两块工作</p>
-<ol>
-<li><p>目前主要对维护脚本整理和标准化以便接入运维平台</p>
-</li>
-<li><p>通过jenkins实现交付, 通过钉钉审批实现协作</p>
-</li>
-</ol>
-<h2 id="告警监控"><a href="#告警监控" class="headerlink" title="告警监控"></a>告警监控</h2><h3 id="告警"><a href="#告警" class="headerlink" title="告警"></a>告警</h3><p>告警这块只是做了个简单的接口自用</p>
-<p>因为春节期间告警的故障导致没有空闲服务器部署.</p>
-<p>所以需要把告警的高可用做起来.</p>
-<h3 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h3><p>监控覆盖率和监控指标, 两个重点</p>
-<ol>
-<li><p>需要梳理下业务的整体架构和监控点.</p>
-</li>
-<li><p>监控系统的扩展性</p>
-</li>
-</ol>
-<h2 id="日志系统"><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h2><h3 id="业务日志"><a href="#业务日志" class="headerlink" title="业务日志"></a>业务日志</h3><p>目前已经搭建了业务的日志, 方便研发运营检索.</p>
-<p>没有对业务的日志进行监控和分析, 优先级较低</p>
-<h3 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h3><p>目前系统日志还未开始实施.</p>
-<p>目的是可以对系统日志监控, 发现一些潜在的问题</p>
-<p>及时处理避免业务的故障, 优先级较低</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>H5游戏研发公司<br>需要将H5项目的URL给合作方进行测试, </p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>避免游戏地址被外部传播</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>使用openrestry作为反向代理<br>在后台通过对项目地址, 过期时间等信息进行对称加密.<br>生成一个url链接，然后发送给合作方</p>
+<p>合作方通过url请求时， 会对url参数中的加密信息进行解密<br>获取项目地址，过期时间等相关的信息</p>
+<p>如果当前时间大于过期时间则返回相应过期提示<br>如果当前时间小于过期时间则通过proxy_pass进行代理请求</p>
+<p>大致的情况就是这样了</p>
+<h2 id="续期"><a href="#续期" class="headerlink" title="续期"></a>续期</h2><p>一直相安无事， 突然有了一个需求<br>过期时间在生成链接时是确定的<br>但是合作方可能还想在体验一下</p>
+<p>简单的方法就是直接重新生成一个新链接<br>但是体验很不好， 因为合作方可能有多个人在测试<br>这样的话， 就需要将新链接通知到N个人<br>麻烦且低效</p>
+<h2 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h2><p>所以我们需要找到一个方法能对发出去的url进行续期操作<br>先想到了一个方法， 对每个生成的url都有一个id<br>续期时直接传送一个参数id来定位一个url, 然后进行相应的操作<br>这样openresty这边就需要构建一个数据库将所有的url记录下来</p>
+<p>原来openresty这只是一个过期的判断<br>如果这样修改则需要生成一堆的数据信息<br>能不能简单点</p>
+<h2 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h2><p>我们可以直接将url的加密信息作为key<br>存在redis中， 然后设置这个key的过期时间<br>这样既能满足需求，逻辑简单，改动也少</p>
+<p>合作方请求url逻辑</p>
+<p>在redis中查找是否有以“加密信息”为key的value<br>如果存在<br>    进行代理<br>否则<br>    将加密信息解密<br>    对过期时间进行判断<br>    如果过期<br>        返回过期提示<br>    否则<br>        进行代理</p>
+<p>设置url续期逻辑</p>
+<p>直接将url的加密信息作为redis的key存储起来，并设置相应的ttl</p>
+<h2 id="openresty请求阶段问题"><a href="#openresty请求阶段问题" class="headerlink" title="openresty请求阶段问题"></a>openresty请求阶段问题</h2><p>因为需要使用pass_proxy度项目url进行代理<br>所以我们需要通过set_by_lua来获取项目的URL地址<br>并且直接在set_by_lua中进行判断是否过期(就是个时间比较)</p>
+<p>但是在set_by_lua阶段不能访问redis的外部服务(因为性能)<br>所以最后我们先在set_by_lua阶段生成代理的url<br>然后在access_by_lua阶段判断请求的url是否过期</p>
+<p>以上是我们在外部测试网关管理的问题和总结</p>
 
       
     </div>
@@ -430,14 +386,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/总结/" rel="tag"># 总结</a>
-          
-            <a href="/tags/工作/" rel="tag"># 工作</a>
-          
-        </div>
-      
 
       
       
@@ -447,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/20/Ops/自动化/业务的自动化部署/" rel="next" title="业务的自动化部署">
-                <i class="fa fa-chevron-left"></i> 业务的自动化部署
+              <a href="/2020/11/13/复盘/问题/阿里云ASK踩坑记录/" rel="next" title="阿里云ASK踩坑记录">
+                <i class="fa fa-chevron-left"></i> 阿里云ASK踩坑记录
               </a>
             
           </div>
@@ -456,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/12/Ops/监控/业务监控/服务端业务异常日志监控/" rel="prev" title="服务端业务异常日志监控">
-                服务端业务异常日志监控 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2019年终整理"><span class="nav-number">1.</span> <span class="nav-text">2019年终整理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运维平台"><span class="nav-number">1.1.</span> <span class="nav-text">运维平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CMDB"><span class="nav-number">1.1.1.</span> <span class="nav-text">CMDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维护功能"><span class="nav-number">1.1.2.</span> <span class="nav-text">维护功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#巡检系统"><span class="nav-number">1.1.3.</span> <span class="nav-text">巡检系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#账单系统"><span class="nav-number">1.1.4.</span> <span class="nav-text">账单系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时任务系统"><span class="nav-number">1.1.5.</span> <span class="nav-text">定时任务系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化"><span class="nav-number">1.2.</span> <span class="nav-text">自动化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">1.2.1.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移"><span class="nav-number">1.2.2.</span> <span class="nav-text">迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合服"><span class="nav-number">1.2.3.</span> <span class="nav-text">合服</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">1.2.4.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#告警监控"><span class="nav-number">1.3.</span> <span class="nav-text">告警监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#告警"><span class="nav-number">1.3.1.</span> <span class="nav-text">告警</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控"><span class="nav-number">1.3.2.</span> <span class="nav-text">监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志系统"><span class="nav-number">1.4.</span> <span class="nav-text">日志系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务日志"><span class="nav-number">1.4.1.</span> <span class="nav-text">业务日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统日志"><span class="nav-number">1.4.2.</span> <span class="nav-text">系统日志</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">1.3.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#续期"><span class="nav-number">1.4.</span> <span class="nav-text">续期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案1"><span class="nav-number">1.5.</span> <span class="nav-text">方案1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案2"><span class="nav-number">1.6.</span> <span class="nav-text">方案2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty请求阶段问题"><span class="nav-number">1.7.</span> <span class="nav-text">openresty请求阶段问题</span></a></li></ol></li></ol></div>
             
 
           </div>
