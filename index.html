@@ -356,12 +356,13 @@
 
       
         
-          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>H5游戏研发公司<br>需要将H5项目的URL给合作方进行测试, </p>
+          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>H5游戏研发公司<br>需要将H5项目的URL给合作方进行测试, </p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>避免游戏地址被外部传播</p>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>使用openrestry作为反向代理<br>在后台通过对项目地址, 过期时间等信息进行对称加密.<br>生成一个url链接，然后发送给合作方</p>
-<p>合作方通过url请求时， 会对url参数中的加密信息进行解密<br>获取项目地址，过期时间等相关的信息</p>
+<p>合作方使用浏览器打开url时， openresty会收到http请求<br>并对url参数中的加密信息进行解密, 获取项目地址，过期时间等相关的信息</p>
 <p>如果当前时间大于过期时间则返回相应过期提示<br>如果当前时间小于过期时间则通过proxy_pass进行代理请求</p>
 <p>大致的情况就是这样了</p>
+<p>client—-gateway url—-&gt;openresty—-project url—-&gt;project<br>client&lt;—-response data—-openresty&lt;—-response data—-project</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/12/03/Dev/使用openresty构建的外部测试网关/#more" rel="contents">
