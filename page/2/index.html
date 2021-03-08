@@ -263,6 +263,349 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/" itemprop="url">nginx的mirror模块请求返回400状态</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-10T09:37:48+08:00">
+                2020-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/" itemprop="url" rel="index">
+                    <span itemprop="name">复盘</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/复盘/问题/" itemprop="url" rel="index">
+                    <span itemprop="name">问题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>突然被抓来协助大数据的上报网关(OpenResty)</p>
+<p>client -&gt; OpenResty -&gt; Kafka -&gt; ClickHouse</p>
+<p>这里的OpenResty负责数据的兼容, 过滤, 路由</p>
+<p>因为需要经常的修改OpenResty的逻辑配合数据分析这边的需求<br>导致改动容易出现问题, 需要搞个测试环境.<br>通过测试环境的验证后, 在更新到正式环境</p>
+<p>实施方案是使用nginx的mirror模块将请求镜像到测试站点.<br>同样的代码和配置, 通过环境变量来区分生产和测试环境</p>
+<p>大概是这样的.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">                                (不返回client)</span><br><span class="line">client &lt;-------------&gt; nginx &lt;-------------&gt; mirror</span><br></pre></td></tr></table></figure>
+<p>那么问题来了<br>在实施中, 请求主站点时, 镜像站点也能收到请求<br>但一直显示<code>status_code 400</code>, 从表现上来看像是POST的数据丢失了.<br>在nginx的log_format把<code>$request_body</code>参数加上, 发现确实POST数据没有.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.19.0.1 - [08/May/2020:06:35:09] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br><span class="line">172.19.0.1 - [08/May/2020:07:01:09] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br><span class="line">172.19.0.1 - [08/May/2020:07:02:43] &quot;POST /user_login HTTP/1.0&quot; 400 419 &quot;-&quot;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/10/复盘/问题/nginx的mirror站点收到400的状态/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/04/03/Ops/监控/业务监控/客户端业务异常上报监控/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/03/Ops/监控/业务监控/客户端业务异常上报监控/" itemprop="url">客户端业务异常上报监控</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-03T12:09:00+08:00">
+                2020-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ops/" itemprop="url" rel="index">
+                    <span itemprop="name">Ops</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ops/监控/" itemprop="url" rel="index">
+                    <span itemprop="name">监控</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ops/监控/业务监控/" itemprop="url" rel="index">
+                    <span itemprop="name">业务监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们是一家H5的游戏公司<br>客户端以网页, 小程序, APP的方式发布<br>对CDN的请求非常的大, 所以CDN请求的影响是非常大的.</p>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>其实一开始是想放在 <a href="/2020/05/02/服务端业务异常日志监控/">服务端业务异常日志监控</a> 一起讲的<br>然而因为这里有一些情况不太一样, 细讲起来差异还挺大的.<br>所以这里就拆开单独写了(真的不是为了凑数!!!)</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
+<li>客户端请求CDN卡顿</li>
+<li>客户端请求服务端卡顿</li>
+<li>客户端代码异常</li>
+</ol>
+<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>elasticsearch, 存储检索<br>logstash, 上报格式转换<br>kibana, 统计展示<br>openresty, 上报网关<br>(和”隔壁”的架构差不多, 只是用openresty替代了filebeat)</p>
+<p>看图…<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/03/Ops/监控/业务监控/客户端业务异常上报监控/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2020/03/19/复盘/总结/业务监控整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1177,7 +1520,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1236,7 +1579,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
