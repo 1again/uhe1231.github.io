@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="flink,故障,大数据,">
 
 
 
@@ -80,18 +80,18 @@
 
 
 <meta name="description" content="故障表现在启动job时随机出现checkpoint无法完成的情况 但只要job能够正常跑起来就一直都没有问题 没有任何的错误日志   背景环境在腾讯云的k8s上搭建的flink standalone in k8s 模式, 版本是flink:1.11.3 Flink的CheckPoint存储用的是腾讯云的NFS 排查思路猜测:怀疑是nfs的问题导致无法成功写入checkpoint 在job的chec">
-<meta name="keywords" content="blog ZhiWei Show">
+<meta name="keywords" content="flink,故障,大数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ZhiWei Show">
+<meta property="og:title" content="Docker-Swarm尝试引发的并发问题">
 <meta property="og:url" content="https://zhiwei.show/2021/03/08/复盘/问题/flink启动job随机卡住故障排查/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
 <meta property="og:description" content="故障表现在启动job时随机出现checkpoint无法完成的情况 但只要job能够正常跑起来就一直都没有问题 没有任何的错误日志   背景环境在腾讯云的k8s上搭建的flink standalone in k8s 模式, 版本是flink:1.11.3 Flink的CheckPoint存储用的是腾讯云的NFS 排查思路猜测:怀疑是nfs的问题导致无法成功写入checkpoint 在job的chec">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhiwei.show/2021/03/08/复盘/问题/flink启动job随机卡住故障排查/2021-03-08-22-29-07.png">
 <meta property="og:image" content="https://zhiwei.show/2021/03/08/复盘/问题/flink启动job随机卡住故障排查/2021-03-08-22-29-37.png">
-<meta property="og:updated_time" content="2021-03-08T14:30:08.122Z">
+<meta property="og:updated_time" content="2021-03-08T14:32:19.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZhiWei Show">
+<meta name="twitter:title" content="Docker-Swarm尝试引发的并发问题">
 <meta name="twitter:description" content="故障表现在启动job时随机出现checkpoint无法完成的情况 但只要job能够正常跑起来就一直都没有问题 没有任何的错误日志   背景环境在腾讯云的k8s上搭建的flink standalone in k8s 模式, 版本是flink:1.11.3 Flink的CheckPoint存储用的是腾讯云的NFS 排查思路猜测:怀疑是nfs的问题导致无法成功写入checkpoint 在job的chec">
 <meta name="twitter:image" content="https://zhiwei.show/2021/03/08/复盘/问题/flink启动job随机卡住故障排查/2021-03-08-22-29-07.png">
 
@@ -129,7 +129,7 @@
 
 
 
-  <title> | ZhiWei Show</title>
+  <title>Docker-Swarm尝试引发的并发问题 | ZhiWei Show</title>
   
 
 
@@ -283,7 +283,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">Docker-Swarm尝试引发的并发问题</h2>
         
 
         <div class="post-meta">
@@ -296,7 +296,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-08T22:23:10+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-08T22:31:35+08:00">
                 2021-03-08
               </time>
             
@@ -418,6 +418,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/flink/" rel="tag"># flink</a>
+          
+            <a href="/tags/故障/" rel="tag"># 故障</a>
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+        </div>
+      
 
       
       
@@ -534,7 +544,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

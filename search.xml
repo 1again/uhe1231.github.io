@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title></title>
+      <title>Docker-Swarm尝试引发的并发问题</title>
       <link href="/2021/03/08/%E5%A4%8D%E7%9B%98/%E9%97%AE%E9%A2%98/flink%E5%90%AF%E5%8A%A8job%E9%9A%8F%E6%9C%BA%E5%8D%A1%E4%BD%8F%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
       <url>/2021/03/08/%E5%A4%8D%E7%9B%98/%E9%97%AE%E9%A2%98/flink%E5%90%AF%E5%8A%A8job%E9%9A%8F%E6%9C%BA%E5%8D%A1%E4%BD%8F%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</url>
       
@@ -19,6 +19,16 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> flink </tag>
+            
+            <tag> 故障 </tag>
+            
+            <tag> 大数据 </tag>
+            
+        </tags>
       
     </entry>
     
