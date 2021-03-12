@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3 zookeeper 上如果没有">
+<meta name="description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3">
 <meta name="keywords" content="k8s,qcloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="qcloud的k8s集群界面编辑导致pod无法启动">
 <meta property="og:url" content="https://zhiwei.show/f4b54833899b4b93a4b968318ae4afec/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
-<meta property="og:description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3 zookeeper 上如果没有">
+<meta property="og:description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhiwei.show/resource/7f64c601114f4f5db48126eb94fef2b8.png">
 <meta property="og:image" content="https://zhiwei.show/resource/098223c1429d4087907869be1c6a9a91.png">
 <meta property="og:image" content="https://zhiwei.show/resource/38ceb7c23da54ea5a086b12cc5f59113.png">
-<meta property="og:updated_time" content="2021-03-12T02:55:53.000Z">
+<meta property="og:updated_time" content="2021-03-12T02:57:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qcloud的k8s集群界面编辑导致pod无法启动">
-<meta name="twitter:description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3 zookeeper 上如果没有">
+<meta name="twitter:description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3">
 <meta name="twitter:image" content="https://zhiwei.show/resource/7f64c601114f4f5db48126eb94fef2b8.png">
 
 
@@ -329,6 +329,7 @@
 <p><img src="../resource/7f64c601114f4f5db48126eb94fef2b8.png" alt="de642b7c366f05b6982eaead18a59758.png"></p>
 <p>zookeeper 其实是有参数可以实现自动清理以前的数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 间隔多久进行一次清理</span><br><span class="line">autopurge.purgeInterval: int, default=0</span><br><span class="line"># 保留多少个数据, 这里包括日志和快照的数据</span><br><span class="line">autopurge.snapretaincount: int, default=3</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>zookeeper 上如果没有设置<code>autopurge.purgeInterval</code>参数, 默认是 0, 表示关闭自动清理</p>
 <p>导致数据一直保留着, 把磁盘写满了(其实也就 10G, 小规模的集群)</p>
 <p>因为使用 helm 部署的 zookeeper, 参数都是通过环境变量控制的</p>

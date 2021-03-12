@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="故障表现在启动 job 时随机出现 checkpoint 无法完成的情况 但只要 job 能够正常跑起来就一直都没有问题 没有任何的错误日志   背景环境在腾讯云的 k8s 上搭建的 flink standalone in k8s 模式, 版本是 flink:1.11.3 Flink 的 CheckPoint 存储用的是腾讯云的 NFS 排查思路猜测: 怀疑是 NFS 的问题直接去掉 NFS 挂载">
+<meta name="description" content="故障表现在启动 job 时随机出现 checkpoint 无法完成的情况 但只要 job 能够正常跑起来就一直都没有问题 没有任何的错误日志">
 <meta name="keywords" content="flink,故障">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flink启动job随机卡住故障排查">
 <meta property="og:url" content="https://zhiwei.show/34f2635ca876481da35832a0995e4875/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
-<meta property="og:description" content="故障表现在启动 job 时随机出现 checkpoint 无法完成的情况 但只要 job 能够正常跑起来就一直都没有问题 没有任何的错误日志   背景环境在腾讯云的 k8s 上搭建的 flink standalone in k8s 模式, 版本是 flink:1.11.3 Flink 的 CheckPoint 存储用的是腾讯云的 NFS 排查思路猜测: 怀疑是 NFS 的问题直接去掉 NFS 挂载">
+<meta property="og:description" content="故障表现在启动 job 时随机出现 checkpoint 无法完成的情况 但只要 job 能够正常跑起来就一直都没有问题 没有任何的错误日志">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhiwei.show/resource/24eab53b368c4632b4220c7fa11e7770.png">
 <meta property="og:image" content="https://zhiwei.show/resource/0ed70bc5087040f7bd36e520e636e130.png">
-<meta property="og:updated_time" content="2021-03-09T22:28:18.000Z">
+<meta property="og:updated_time" content="2021-03-12T02:57:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flink启动job随机卡住故障排查">
-<meta name="twitter:description" content="故障表现在启动 job 时随机出现 checkpoint 无法完成的情况 但只要 job 能够正常跑起来就一直都没有问题 没有任何的错误日志   背景环境在腾讯云的 k8s 上搭建的 flink standalone in k8s 模式, 版本是 flink:1.11.3 Flink 的 CheckPoint 存储用的是腾讯云的 NFS 排查思路猜测: 怀疑是 NFS 的问题直接去掉 NFS 挂载">
+<meta name="twitter:description" content="故障表现在启动 job 时随机出现 checkpoint 无法完成的情况 但只要 job 能够正常跑起来就一直都没有问题 没有任何的错误日志">
 <meta name="twitter:image" content="https://zhiwei.show/resource/24eab53b368c4632b4220c7fa11e7770.png">
 
 
@@ -329,6 +329,7 @@
 <p>没有任何的错误日志</p>
 <p><img src="../resource/24eab53b368c4632b4220c7fa11e7770.png" alt="ce95965764a3fe6be318253fed181a72.png"></p>
 <p><img src="../resource/0ed70bc5087040f7bd36e520e636e130.png" alt="b6ec6decddba84e326d58318e69d1817.png"></p>
+<a id="more"></a>
 <h1 id="背景环境"><a href="#背景环境" class="headerlink" title="背景环境"></a>背景环境</h1><p>在腾讯云的 k8s 上搭建的 flink standalone in k8s 模式, 版本是 flink:1.11.3</p>
 <p>Flink 的 CheckPoint 存储用的是腾讯云的 NFS</p>
 <h1 id="排查思路"><a href="#排查思路" class="headerlink" title="排查思路"></a>排查思路</h1><h2 id="猜测-怀疑是-NFS-的问题"><a href="#猜测-怀疑是-NFS-的问题" class="headerlink" title="猜测: 怀疑是 NFS 的问题"></a>猜测: 怀疑是 NFS 的问题</h2><p>直接去掉 NFS 挂载, 使用本地文件存储 checkpoint, 问题表现依旧</p>
