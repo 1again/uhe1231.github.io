@@ -18,8 +18,8 @@
   
   <entry>
     <title>qcloud的k8s集群界面编辑导致pod无法启动</title>
-    <link href="https://zhiwei.show/2021/03/12/f4b54833899b4b93a4b968318ae4afec/"/>
-    <id>https://zhiwei.show/2021/03/12/f4b54833899b4b93a4b968318ae4afec/</id>
+    <link href="https://zhiwei.show/f4b54833899b4b93a4b968318ae4afec/"/>
+    <id>https://zhiwei.show/f4b54833899b4b93a4b968318ae4afec/</id>
     <published>2021-03-11T18:52:18.000Z</published>
     <updated>2021-03-11T20:33:10.000Z</updated>
     
@@ -44,8 +44,8 @@
   
   <entry>
     <title>BLOG方案的调整</title>
-    <link href="https://zhiwei.show/2021/03/11/2dc0f4142a23440ca1e50cde7c6d02e0/"/>
-    <id>https://zhiwei.show/2021/03/11/2dc0f4142a23440ca1e50cde7c6d02e0/</id>
+    <link href="https://zhiwei.show/2dc0f4142a23440ca1e50cde7c6d02e0/"/>
+    <id>https://zhiwei.show/2dc0f4142a23440ca1e50cde7c6d02e0/</id>
     <published>2021-03-11T00:24:20.000Z</published>
     <updated>2021-03-11T21:09:08.000Z</updated>
     
@@ -66,8 +66,8 @@
   
   <entry>
     <title>Docker-Swarm尝试引发的并发问题</title>
-    <link href="https://zhiwei.show/2021/03/10/b078bce7c017421483ca473014d6f081/"/>
-    <id>https://zhiwei.show/2021/03/10/b078bce7c017421483ca473014d6f081/</id>
+    <link href="https://zhiwei.show/b078bce7c017421483ca473014d6f081/"/>
+    <id>https://zhiwei.show/b078bce7c017421483ca473014d6f081/</id>
     <published>2021-03-10T01:31:51.000Z</published>
     <updated>2021-03-10T01:33:40.000Z</updated>
     
@@ -92,8 +92,8 @@
   
   <entry>
     <title>2019年的工作整理总结</title>
-    <link href="https://zhiwei.show/2021/03/10/c5cdc0da435e494f8037967c4df7af78/"/>
-    <id>https://zhiwei.show/2021/03/10/c5cdc0da435e494f8037967c4df7af78/</id>
+    <link href="https://zhiwei.show/c5cdc0da435e494f8037967c4df7af78/"/>
+    <id>https://zhiwei.show/c5cdc0da435e494f8037967c4df7af78/</id>
     <published>2021-03-10T01:29:24.000Z</published>
     <updated>2021-03-10T03:16:50.000Z</updated>
     
@@ -118,8 +118,8 @@
   
   <entry>
     <title>有关SaltStack的State错误的执行在其他主机上</title>
-    <link href="https://zhiwei.show/2021/03/10/397203e63bb441198edc9333273d2194/"/>
-    <id>https://zhiwei.show/2021/03/10/397203e63bb441198edc9333273d2194/</id>
+    <link href="https://zhiwei.show/397203e63bb441198edc9333273d2194/"/>
+    <id>https://zhiwei.show/397203e63bb441198edc9333273d2194/</id>
     <published>2021-03-10T01:25:04.000Z</published>
     <updated>2021-03-10T01:26:49.000Z</updated>
     
@@ -140,8 +140,8 @@
   
   <entry>
     <title>使用nginx代理跨机房的saltstack使用</title>
-    <link href="https://zhiwei.show/2021/03/10/a4f387bec6bc469db9a65aff81e63b6c/"/>
-    <id>https://zhiwei.show/2021/03/10/a4f387bec6bc469db9a65aff81e63b6c/</id>
+    <link href="https://zhiwei.show/a4f387bec6bc469db9a65aff81e63b6c/"/>
+    <id>https://zhiwei.show/a4f387bec6bc469db9a65aff81e63b6c/</id>
     <published>2021-03-10T01:24:09.000Z</published>
     <updated>2021-03-10T01:24:53.000Z</updated>
     
@@ -167,8 +167,8 @@
   
   <entry>
     <title>本地数据库迁移至云数据库的复盘总结</title>
-    <link href="https://zhiwei.show/2021/03/10/4da7bf5f40c24ab385e61585da25c951/"/>
-    <id>https://zhiwei.show/2021/03/10/4da7bf5f40c24ab385e61585da25c951/</id>
+    <link href="https://zhiwei.show/4da7bf5f40c24ab385e61585da25c951/"/>
+    <id>https://zhiwei.show/4da7bf5f40c24ab385e61585da25c951/</id>
     <published>2021-03-10T01:21:46.000Z</published>
     <updated>2021-03-10T01:23:56.000Z</updated>
     
@@ -206,8 +206,8 @@
   
   <entry>
     <title>游戏业务数据库集中式储存的问题</title>
-    <link href="https://zhiwei.show/2021/03/10/4ec7a130f7bb4ac48dfae71508b462e7/"/>
-    <id>https://zhiwei.show/2021/03/10/4ec7a130f7bb4ac48dfae71508b462e7/</id>
+    <link href="https://zhiwei.show/4ec7a130f7bb4ac48dfae71508b462e7/"/>
+    <id>https://zhiwei.show/4ec7a130f7bb4ac48dfae71508b462e7/</id>
     <published>2021-03-10T01:20:13.000Z</published>
     <updated>2021-03-10T01:21:20.000Z</updated>
     
@@ -231,8 +231,8 @@
   
   <entry>
     <title>使用openresty构建的外部测试网关</title>
-    <link href="https://zhiwei.show/2021/03/10/78b08057401441c8bd6c141f7665a0da/"/>
-    <id>https://zhiwei.show/2021/03/10/78b08057401441c8bd6c141f7665a0da/</id>
+    <link href="https://zhiwei.show/78b08057401441c8bd6c141f7665a0da/"/>
+    <id>https://zhiwei.show/78b08057401441c8bd6c141f7665a0da/</id>
     <published>2021-03-10T01:18:22.000Z</published>
     <updated>2021-03-10T01:33:50.000Z</updated>
     
@@ -257,8 +257,8 @@
   
   <entry>
     <title>阿里云ASK踩坑记录</title>
-    <link href="https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/"/>
-    <id>https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/</id>
+    <link href="https://zhiwei.show/f38b2488baed4a5d88966be05d09d788/"/>
+    <id>https://zhiwei.show/f38b2488baed4a5d88966be05d09d788/</id>
     <published>2021-03-10T01:15:41.000Z</published>
     <updated>2021-03-10T01:18:22.000Z</updated>
     
@@ -289,8 +289,8 @@
   
   <entry>
     <title>业务监控整理总结</title>
-    <link href="https://zhiwei.show/2021/03/10/993b27b34e7a4165a667a75dcf128296/"/>
-    <id>https://zhiwei.show/2021/03/10/993b27b34e7a4165a667a75dcf128296/</id>
+    <link href="https://zhiwei.show/993b27b34e7a4165a667a75dcf128296/"/>
+    <id>https://zhiwei.show/993b27b34e7a4165a667a75dcf128296/</id>
     <published>2021-03-09T22:02:24.000Z</published>
     <updated>2021-03-09T22:02:36.000Z</updated>
     
@@ -322,8 +322,8 @@
   
   <entry>
     <title>nginx的mirror模块请求返回400状态</title>
-    <link href="https://zhiwei.show/2021/03/10/faa6264186c549e2872823cad0749b68/"/>
-    <id>https://zhiwei.show/2021/03/10/faa6264186c549e2872823cad0749b68/</id>
+    <link href="https://zhiwei.show/faa6264186c549e2872823cad0749b68/"/>
+    <id>https://zhiwei.show/faa6264186c549e2872823cad0749b68/</id>
     <published>2021-03-09T21:55:34.000Z</published>
     <updated>2021-03-09T21:56:07.000Z</updated>
     
@@ -354,8 +354,8 @@
   
   <entry>
     <title>错误的HTTP头解析引发的故障</title>
-    <link href="https://zhiwei.show/2021/03/10/ffb30a139e094665af16e5314e55883d/"/>
-    <id>https://zhiwei.show/2021/03/10/ffb30a139e094665af16e5314e55883d/</id>
+    <link href="https://zhiwei.show/ffb30a139e094665af16e5314e55883d/"/>
+    <id>https://zhiwei.show/ffb30a139e094665af16e5314e55883d/</id>
     <published>2021-03-09T21:43:37.000Z</published>
     <updated>2021-03-09T22:29:37.000Z</updated>
     
@@ -389,35 +389,9 @@
   </entry>
   
   <entry>
-    <title>业务的自动化部署</title>
-    <link href="https://zhiwei.show/2021/03/10/f35cc21df4554c23b02a4f88da96fce6/"/>
-    <id>https://zhiwei.show/2021/03/10/f35cc21df4554c23b02a4f88da96fce6/</id>
-    <published>2021-03-09T21:40:43.000Z</published>
-    <updated>2021-03-09T21:43:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>游戏行业的滚服需求, 服务之间相互独立<br>每天有大量的服务部署需求<br>并且在保证<code>稳定</code>的前提下尽可能的提高<code>资源利用率</code></p><p>而且还有个问题, 我们没有购买主机的权限<br>需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付<br>这就导致需要预留一定数量的主机, 避免支付响应不及时引发的运营事故</p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>我们这里解决问题的是如何实现自动部署<br>可能一些老司机说, 自动部署嘛, 这还不简单<br>写个页面, 然后调用 Ansible 一下子就完成了.</p><p>但是我们想要做的是完全自动化<br>整个流程无人介入(不出问题的情况下)</p><p>PS: 只是部署, 不负责发布上线</p><a id="more"></a><h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>有图有状况…</p><h2 id="功能图"><a href="#功能图" class="headerlink" title="功能图"></a>功能图</h2><p><img src="../resource/82638d85b5644c6faa488e97901c7b15.png" alt="cc21f712d030e9b9fec30ecdc3b3eaef.png"></p><h3 id="新主机自动注册"><a href="#新主机自动注册" class="headerlink" title="新主机自动注册"></a>新主机自动注册</h3><p>使用 SaltStack 实现主机的注册<br>当新云主机启动时会自动连上 Salt-Master<br>进行初始化以及将云主机信息注册到 CMDB</p><h3 id="部署检测和调度"><a href="#部署检测和调度" class="headerlink" title="部署检测和调度"></a>部署检测和调度</h3><p>使用 Crontab 每 10 分钟检测一次(确实 Low, 但是香)<br>如果未使用服务数量不足<br>则根据资源历史使用情况进行筛选部署的主机</p><h3 id="任务执行和查看"><a href="#任务执行和查看" class="headerlink" title="任务执行和查看"></a>任务执行和查看</h3><p>确定了部署的主机后, 通过 HTTP 请求新建一个部署任务<br>任务系统负责将需要执行的任务转化为 SaltStack 的 State<br>SaltStack 将执行完成后的结果保存进 Mongodb 以便查看</p><h3 id="新主机购买通知"><a href="#新主机购买通知" class="headerlink" title="新主机购买通知"></a>新主机购买通知</h3><p>又是 Crontab, 我们基本上一天购买一批主机<br>在固定的时间点, 检测服务部署的失败次数(没有低负载的机器)<br>然后根据失败的服务数量大致的判断需要购买多少主机<br>最后通过 API 接口下订单, 发邮件通知合作方</p><h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><p>因为我们整体的规模不是很大<br>所有架构方面做的很简单(维护成本低)</p><p><img src="../resource/6eec0800bed14826b1a4c19ee7699604.png" alt="6bfe34dacc1d1a67ce9a3b3b4a7fae45.png"></p><h3 id="基础数据层"><a href="#基础数据层" class="headerlink" title="基础数据层"></a>基础数据层</h3><p>所有的资源和服务的状态<br>OLD-CMDB 是历史包袱, 研发用于更新和维护的数据<br>Canal, Kafka 是用于实时同步服务的状态(是否上线)<br>CMDB 基于 HTTP 接口为其他系统提供数据支持</p><p>CMDB 就应该是干干净净的<code>配置管理数据库</code><br>其他业务逻辑应该在上层封装避免数据和逻辑的耦合</p><h3 id="业务逻辑层"><a href="#业务逻辑层" class="headerlink" title="业务逻辑层"></a>业务逻辑层</h3><p>封装所有的业务逻辑和任务执行所需要的数据, 所有的业务逻辑都在这层体现<br>Approval 是为了与办公通信软件进行交互的, 我们这里使用 DingTalk 来走流程.<br>(走流程的目的是同步信息避免干完事后发现关键人员毫不知情)</p><h3 id="任务执行层"><a href="#任务执行层" class="headerlink" title="任务执行层"></a>任务执行层</h3><p>在 SaltStack 上封装一层任务系统<br>用来解耦任务状态以及记录任务的执行的数据<br>这里的 SaltStack 也可以替换成 Ansible, Puppet<br>任务执行过程中如果进行干预还没有一个较好的方案<br>一个思路是通过 SaltStack 的 Event 来实现(耦合了)</p><h3 id="资源监控层"><a href="#资源监控层" class="headerlink" title="资源监控层"></a>资源监控层</h3><p>监控主机和服务的资源使用情况<br>同样提供统一的接口给外部使用<br>这里为什么使用了三个不同的监控系统<br>Zabbix 之前的监控, 所以不想改动, 但是性能已经不能满足需求了<br>OpenFalcon 是专为自动化而搭建的监控系统, 设计的 JSON 格式非常灵活, 但存储和接口不太好用<br>Prometheus 只是进行尝试, PromSql 很灵活, 性能优秀, 但可扩展性比较复杂, 更像是一个组件</p><h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><h2 id="部署检测和调度-1"><a href="#部署检测和调度-1" class="headerlink" title="部署检测和调度"></a>部署检测和调度</h2><h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>上面也提到了, 我们使用 Crontab 定时检测部署的服务是否够用<br>这里有个问题需要解决, 到底预留多少个空闲的服务呢?<br>有些平台开服很快, 一天 10 个服还不够.<br>有些平台开服龟速, 一星期开不到 1 个服.<br>写个常量肯定是不行的, 自己骗自己.</p><p>要不通过配置的方式人工的去调整…<br>一开始确实是这么想的, 先搞起来后面在优化.<br>但有同事表示完全没有人会去主动的做调整.</p><p>最后我们决定通过每个平台的最近开服数来动态判断.<br>这个方案可以是可以, 缺点就是自动部署就依赖了外部的系统.<br>导致扩展性和兼容性很差, 尤其是跨部门的情况下.<br>容易出现对方要改, 我们崩溃, 我们要改, 对方不理.<br>也没更好的办法了, 先这么搞吧…</p><h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><p>这块是个重点, 详细说起来有点像王大妈的裹脚布<br>简单概括一下, 是这么个思路</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">占用资源最大的服务 = 获取最近上线占用资源最大的服务()</span><br><span class="line"></span><br><span class="line">最低负载的比例 = 70%</span><br><span class="line">for 机器 in 所有机器</span><br><span class="line">    # 需要考虑已经部署, 但是没有上线服务的负载情况</span><br><span class="line">    # 这里懒得写的, 不然就很长很臭了...</span><br><span class="line">    机器负载 = 获取机器负载(机器)</span><br><span class="line"></span><br><span class="line">    机器预估负载 = 机器负载 + 占用资源最大的服务</span><br><span class="line">    机器预估负载比例 = 机器预估负载 / 机器的总内存</span><br><span class="line"></span><br><span class="line">    if 机器预估负载比例 &lt; 最低负载的比例</span><br><span class="line">        最低负载的比例 = 机器预估负载比例</span><br><span class="line">        最低负载的机器 = 机器</span><br></pre></td></tr></table></figure><p>然后就能找到了最低负载的机器<br>如果没有的话, 就终止任务, 等待下个检测周期<br>牛奶和机器总会有的…</p><h2 id="任务执行和查看-1"><a href="#任务执行和查看-1" class="headerlink" title="任务执行和查看"></a>任务执行和查看</h2><p>在任务系统将任务的信息转化为 SaltStack 的 State<br>然后通过 SaltStack 的 API 去执行<br>最后将执行的结果保存在 Mongodb 中.</p><p>同时用 Crontab 每分钟跑一个定时脚本<br>找到<code>执行超时</code>的和<code>执行失败</code>的任务并发送报警通知<br>收到报警时, 我们可以查看任务执行时的详细情况来解决隐患</p><p><img src="../resource/77b3b6e412134bdcb22c194ca8c892ba.png" alt="7d7550462ae7370c19872417dc511950.png"></p><h2 id="新主机购买通知-1"><a href="#新主机购买通知-1" class="headerlink" title="新主机购买通知"></a>新主机购买通知</h2><p>先来想想, 什么时候需要购买新的主机.<br>在当部署服务时找不低负载主机, 肯定不能触发购买行为<br>因为, 每次找不到低负载主机就触发, 结果就是一天购买十几次的主机<br>(我们没权限直接购买支付, 只能下单, 由合作方支付, 非常高的协作成本和时间成本)</p><p>这时候就要将服务状态修改成<code>等待资源</code>状态.<br>这个状态是为了让购买主机的程序知道, 到底需要购买多少个主机<br>等待购买主机的任务检测时进行下单并且通知合作方</p><p>即使是服务状态已经是<code>等待资源</code>了, 在部署的流程里依然需要进行尝试部署<br>因为不能说上一次没有部署成功, 这一次就不能部署成功<br>资源的使用情况是会随时改变的.</p><h2 id="新主机自动注册-1"><a href="#新主机自动注册-1" class="headerlink" title="新主机自动注册"></a>新主机自动注册</h2><p>我们在购买云主机的时候, 会使用事先制作好的镜像.<br>将 Salt-Minion 装在镜像里, 启动时会自动的连上 Salt-Master<br>进行初始化以及注册到 CMDB 上</p><p>这里有个问题是用什么来作为主机的唯一标识.<br>实例 ID? 主机名? 内网 IP? 公网 IP? 还是自定义?<br>实例 ID 或许是个好主意, 但是有些奇奇怪怪的问题.<br>比如不同公有云的实例 ID 是否会冲突<br>又比如如果我们使用私有云或者没有实例 ID 的公有云怎么办.</p><p>主机名也有些同样的问题, 主机名是否会冲突<br>如果修改了主机名这个主机还是这个主机吗?</p><p>内网 IP, 这个不用想肯定会冲突.</p><p>公网 IP 又会有没有公网 IP 的主机情况或者是 NAT 模式的情况.</p><p>云厂商+区域+实例 ID 是一个比较好的方案.<br>但是我们用的是 云厂商配置名(云厂商+区域)+内网 IP<br>这种方式, 主要是因为, 当时我们没有找到在主机内获取主机实例 ID 的方式<br>其次云厂商配置名+内网 IP 的方案会更加的通用.</p><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>全都自动了, 能有啥好看的…</p><p><img src="../resource/2406cf1e4d9d471abb903f466da35492.png" alt="a6f65b3cb4c2b8844aa63142965194c8.png"></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说效率不错.<br>解放了人力, 并且保证了质量和效率.<br>期间也修修补补了很多次(调参)</p><p>在兼容性和扩展性的还不是很满意<br>这个涉及到运维基础的标准和项目的不同需求.<br>很难做到一套通用, 只能将通用的部署抽出来.<br>不同的细节通过脚本来定制化.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;游戏行业的滚服需求, 服务之间相互独立&lt;br&gt;每天有大量的服务部署需求&lt;br&gt;并且在保证&lt;code&gt;稳定&lt;/code&gt;的前提下尽可能的提高&lt;code&gt;资源利用率&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;而且还有个问题, 我们没有购买主机的权限&lt;br&gt;需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付&lt;br&gt;这就导致需要预留一定数量的主机, 避免支付响应不及时引发的运营事故&lt;/p&gt;
-&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;p&gt;我们这里解决问题的是如何实现自动部署&lt;br&gt;可能一些老司机说, 自动部署嘛, 这还不简单&lt;br&gt;写个页面, 然后调用 Ansible 一下子就完成了.&lt;/p&gt;
-&lt;p&gt;但是我们想要做的是完全自动化&lt;br&gt;整个流程无人介入(不出问题的情况下)&lt;/p&gt;
-&lt;p&gt;PS: 只是部署, 不负责发布上线&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="自动化" scheme="https://zhiwei.show/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
-    
-      <category term="saltstack" scheme="https://zhiwei.show/tags/saltstack/"/>
-    
-  </entry>
-  
-  <entry>
     <title>客户端业务异常上报监控</title>
-    <link href="https://zhiwei.show/2021/03/10/1a05d579266a40bb9785b91b8de3fe70/"/>
-    <id>https://zhiwei.show/2021/03/10/1a05d579266a40bb9785b91b8de3fe70/</id>
+    <link href="https://zhiwei.show/1a05d579266a40bb9785b91b8de3fe70/"/>
+    <id>https://zhiwei.show/1a05d579266a40bb9785b91b8de3fe70/</id>
     <published>2021-03-09T21:37:05.000Z</published>
     <updated>2021-03-09T21:39:44.000Z</updated>
     
@@ -446,8 +420,8 @@
   
   <entry>
     <title>服务端业务异常日志监控</title>
-    <link href="https://zhiwei.show/2021/03/10/f2293fe655bd4009a7eef9c1fdff8dc5/"/>
-    <id>https://zhiwei.show/2021/03/10/f2293fe655bd4009a7eef9c1fdff8dc5/</id>
+    <link href="https://zhiwei.show/f2293fe655bd4009a7eef9c1fdff8dc5/"/>
+    <id>https://zhiwei.show/f2293fe655bd4009a7eef9c1fdff8dc5/</id>
     <published>2021-03-09T21:16:29.000Z</published>
     <updated>2021-03-09T21:36:23.000Z</updated>
     
@@ -471,8 +445,8 @@
   
   <entry>
     <title>Lua实现的hash合并功能</title>
-    <link href="https://zhiwei.show/2021/03/10/2ab3d2be0894444e9be040312112088e/"/>
-    <id>https://zhiwei.show/2021/03/10/2ab3d2be0894444e9be040312112088e/</id>
+    <link href="https://zhiwei.show/2ab3d2be0894444e9be040312112088e/"/>
+    <id>https://zhiwei.show/2ab3d2be0894444e9be040312112088e/</id>
     <published>2021-03-09T21:13:01.000Z</published>
     <updated>2021-03-09T21:13:12.000Z</updated>
     
@@ -495,8 +469,8 @@
   
   <entry>
     <title>flink启动job随机卡住故障排查</title>
-    <link href="https://zhiwei.show/2021/03/08/34f2635ca876481da35832a0995e4875/"/>
-    <id>https://zhiwei.show/2021/03/08/34f2635ca876481da35832a0995e4875/</id>
+    <link href="https://zhiwei.show/34f2635ca876481da35832a0995e4875/"/>
+    <id>https://zhiwei.show/34f2635ca876481da35832a0995e4875/</id>
     <published>2021-03-08T03:09:34.000Z</published>
     <updated>2021-03-09T22:28:18.000Z</updated>
     
@@ -521,8 +495,8 @@
   
   <entry>
     <title>clickhouse啊, 你很快嘛</title>
-    <link href="https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/"/>
-    <id>https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/</id>
+    <link href="https://zhiwei.show/b4cc7846cded4ac091be89590b09f75d/"/>
+    <id>https://zhiwei.show/b4cc7846cded4ac091be89590b09f75d/</id>
     <published>2021-03-07T18:09:17.000Z</published>
     <updated>2021-03-11T20:41:56.000Z</updated>
     
@@ -543,6 +517,32 @@
       <category term="大数据" scheme="https://zhiwei.show/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="clickhouse" scheme="https://zhiwei.show/tags/clickhouse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>业务的自动化部署</title>
+    <link href="https://zhiwei.show/f35cc21df4554c23b02a4f88da96fce6/"/>
+    <id>https://zhiwei.show/f35cc21df4554c23b02a4f88da96fce6/</id>
+    <published>2019-12-20T02:30:00.000Z</published>
+    <updated>2019-12-20T02:30:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>游戏行业的滚服需求, 服务之间相互独立<br>每天有大量的服务部署需求<br>并且在保证<code>稳定</code>的前提下尽可能的提高<code>资源利用率</code></p><p>而且还有个问题, 我们没有购买主机的权限<br>需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付<br>这就导致需要预留一定数量的主机, 避免支付响应不及时引发的运营事故</p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>我们这里解决问题的是如何实现自动部署<br>可能一些老司机说, 自动部署嘛, 这还不简单<br>写个页面, 然后调用 Ansible 一下子就完成了.</p><p>但是我们想要做的是完全自动化<br>整个流程无人介入(不出问题的情况下)</p><p>PS: 只是部署, 不负责发布上线</p><a id="more"></a><h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>有图有状况…</p><h2 id="功能图"><a href="#功能图" class="headerlink" title="功能图"></a>功能图</h2><p><img src="../resource/82638d85b5644c6faa488e97901c7b15.png" alt="cc21f712d030e9b9fec30ecdc3b3eaef.png"></p><h3 id="新主机自动注册"><a href="#新主机自动注册" class="headerlink" title="新主机自动注册"></a>新主机自动注册</h3><p>使用 SaltStack 实现主机的注册<br>当新云主机启动时会自动连上 Salt-Master<br>进行初始化以及将云主机信息注册到 CMDB</p><h3 id="部署检测和调度"><a href="#部署检测和调度" class="headerlink" title="部署检测和调度"></a>部署检测和调度</h3><p>使用 Crontab 每 10 分钟检测一次(确实 Low, 但是香)<br>如果未使用服务数量不足<br>则根据资源历史使用情况进行筛选部署的主机</p><h3 id="任务执行和查看"><a href="#任务执行和查看" class="headerlink" title="任务执行和查看"></a>任务执行和查看</h3><p>确定了部署的主机后, 通过 HTTP 请求新建一个部署任务<br>任务系统负责将需要执行的任务转化为 SaltStack 的 State<br>SaltStack 将执行完成后的结果保存进 Mongodb 以便查看</p><h3 id="新主机购买通知"><a href="#新主机购买通知" class="headerlink" title="新主机购买通知"></a>新主机购买通知</h3><p>又是 Crontab, 我们基本上一天购买一批主机<br>在固定的时间点, 检测服务部署的失败次数(没有低负载的机器)<br>然后根据失败的服务数量大致的判断需要购买多少主机<br>最后通过 API 接口下订单, 发邮件通知合作方</p><h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><p>因为我们整体的规模不是很大<br>所有架构方面做的很简单(维护成本低)</p><p><img src="../resource/6eec0800bed14826b1a4c19ee7699604.png" alt="6bfe34dacc1d1a67ce9a3b3b4a7fae45.png"></p><h3 id="基础数据层"><a href="#基础数据层" class="headerlink" title="基础数据层"></a>基础数据层</h3><p>所有的资源和服务的状态<br>OLD-CMDB 是历史包袱, 研发用于更新和维护的数据<br>Canal, Kafka 是用于实时同步服务的状态(是否上线)<br>CMDB 基于 HTTP 接口为其他系统提供数据支持</p><p>CMDB 就应该是干干净净的<code>配置管理数据库</code><br>其他业务逻辑应该在上层封装避免数据和逻辑的耦合</p><h3 id="业务逻辑层"><a href="#业务逻辑层" class="headerlink" title="业务逻辑层"></a>业务逻辑层</h3><p>封装所有的业务逻辑和任务执行所需要的数据, 所有的业务逻辑都在这层体现<br>Approval 是为了与办公通信软件进行交互的, 我们这里使用 DingTalk 来走流程.<br>(走流程的目的是同步信息避免干完事后发现关键人员毫不知情)</p><h3 id="任务执行层"><a href="#任务执行层" class="headerlink" title="任务执行层"></a>任务执行层</h3><p>在 SaltStack 上封装一层任务系统<br>用来解耦任务状态以及记录任务的执行的数据<br>这里的 SaltStack 也可以替换成 Ansible, Puppet<br>任务执行过程中如果进行干预还没有一个较好的方案<br>一个思路是通过 SaltStack 的 Event 来实现(耦合了)</p><h3 id="资源监控层"><a href="#资源监控层" class="headerlink" title="资源监控层"></a>资源监控层</h3><p>监控主机和服务的资源使用情况<br>同样提供统一的接口给外部使用<br>这里为什么使用了三个不同的监控系统<br>Zabbix 之前的监控, 所以不想改动, 但是性能已经不能满足需求了<br>OpenFalcon 是专为自动化而搭建的监控系统, 设计的 JSON 格式非常灵活, 但存储和接口不太好用<br>Prometheus 只是进行尝试, PromSql 很灵活, 性能优秀, 但可扩展性比较复杂, 更像是一个组件</p><h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><h2 id="部署检测和调度-1"><a href="#部署检测和调度-1" class="headerlink" title="部署检测和调度"></a>部署检测和调度</h2><h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>上面也提到了, 我们使用 Crontab 定时检测部署的服务是否够用<br>这里有个问题需要解决, 到底预留多少个空闲的服务呢?<br>有些平台开服很快, 一天 10 个服还不够.<br>有些平台开服龟速, 一星期开不到 1 个服.<br>写个常量肯定是不行的, 自己骗自己.</p><p>要不通过配置的方式人工的去调整…<br>一开始确实是这么想的, 先搞起来后面在优化.<br>但有同事表示完全没有人会去主动的做调整.</p><p>最后我们决定通过每个平台的最近开服数来动态判断.<br>这个方案可以是可以, 缺点就是自动部署就依赖了外部的系统.<br>导致扩展性和兼容性很差, 尤其是跨部门的情况下.<br>容易出现对方要改, 我们崩溃, 我们要改, 对方不理.<br>也没更好的办法了, 先这么搞吧…</p><h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><p>这块是个重点, 详细说起来有点像王大妈的裹脚布<br>简单概括一下, 是这么个思路</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">占用资源最大的服务 = 获取最近上线占用资源最大的服务()</span><br><span class="line"></span><br><span class="line">最低负载的比例 = 70%</span><br><span class="line">for 机器 in 所有机器</span><br><span class="line">    # 需要考虑已经部署, 但是没有上线服务的负载情况</span><br><span class="line">    # 这里懒得写的, 不然就很长很臭了...</span><br><span class="line">    机器负载 = 获取机器负载(机器)</span><br><span class="line"></span><br><span class="line">    机器预估负载 = 机器负载 + 占用资源最大的服务</span><br><span class="line">    机器预估负载比例 = 机器预估负载 / 机器的总内存</span><br><span class="line"></span><br><span class="line">    if 机器预估负载比例 &lt; 最低负载的比例</span><br><span class="line">        最低负载的比例 = 机器预估负载比例</span><br><span class="line">        最低负载的机器 = 机器</span><br></pre></td></tr></table></figure><p>然后就能找到了最低负载的机器<br>如果没有的话, 就终止任务, 等待下个检测周期<br>牛奶和机器总会有的…</p><h2 id="任务执行和查看-1"><a href="#任务执行和查看-1" class="headerlink" title="任务执行和查看"></a>任务执行和查看</h2><p>在任务系统将任务的信息转化为 SaltStack 的 State<br>然后通过 SaltStack 的 API 去执行<br>最后将执行的结果保存在 Mongodb 中.</p><p>同时用 Crontab 每分钟跑一个定时脚本<br>找到<code>执行超时</code>的和<code>执行失败</code>的任务并发送报警通知<br>收到报警时, 我们可以查看任务执行时的详细情况来解决隐患</p><p><img src="../resource/77b3b6e412134bdcb22c194ca8c892ba.png" alt="7d7550462ae7370c19872417dc511950.png"></p><h2 id="新主机购买通知-1"><a href="#新主机购买通知-1" class="headerlink" title="新主机购买通知"></a>新主机购买通知</h2><p>先来想想, 什么时候需要购买新的主机.<br>在当部署服务时找不低负载主机, 肯定不能触发购买行为<br>因为, 每次找不到低负载主机就触发, 结果就是一天购买十几次的主机<br>(我们没权限直接购买支付, 只能下单, 由合作方支付, 非常高的协作成本和时间成本)</p><p>这时候就要将服务状态修改成<code>等待资源</code>状态.<br>这个状态是为了让购买主机的程序知道, 到底需要购买多少个主机<br>等待购买主机的任务检测时进行下单并且通知合作方</p><p>即使是服务状态已经是<code>等待资源</code>了, 在部署的流程里依然需要进行尝试部署<br>因为不能说上一次没有部署成功, 这一次就不能部署成功<br>资源的使用情况是会随时改变的.</p><h2 id="新主机自动注册-1"><a href="#新主机自动注册-1" class="headerlink" title="新主机自动注册"></a>新主机自动注册</h2><p>我们在购买云主机的时候, 会使用事先制作好的镜像.<br>将 Salt-Minion 装在镜像里, 启动时会自动的连上 Salt-Master<br>进行初始化以及注册到 CMDB 上</p><p>这里有个问题是用什么来作为主机的唯一标识.<br>实例 ID? 主机名? 内网 IP? 公网 IP? 还是自定义?<br>实例 ID 或许是个好主意, 但是有些奇奇怪怪的问题.<br>比如不同公有云的实例 ID 是否会冲突<br>又比如如果我们使用私有云或者没有实例 ID 的公有云怎么办.</p><p>主机名也有些同样的问题, 主机名是否会冲突<br>如果修改了主机名这个主机还是这个主机吗?</p><p>内网 IP, 这个不用想肯定会冲突.</p><p>公网 IP 又会有没有公网 IP 的主机情况或者是 NAT 模式的情况.</p><p>云厂商+区域+实例 ID 是一个比较好的方案.<br>但是我们用的是 云厂商配置名(云厂商+区域)+内网 IP<br>这种方式, 主要是因为, 当时我们没有找到在主机内获取主机实例 ID 的方式<br>其次云厂商配置名+内网 IP 的方案会更加的通用.</p><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>全都自动了, 能有啥好看的…</p><p><img src="../resource/2406cf1e4d9d471abb903f466da35492.png" alt="a6f65b3cb4c2b8844aa63142965194c8.png"></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说效率不错.<br>解放了人力, 并且保证了质量和效率.<br>期间也修修补补了很多次(调参)</p><p>在兼容性和扩展性的还不是很满意<br>这个涉及到运维基础的标准和项目的不同需求.<br>很难做到一套通用, 只能将通用的部署抽出来.<br>不同的细节通过脚本来定制化.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;游戏行业的滚服需求, 服务之间相互独立&lt;br&gt;每天有大量的服务部署需求&lt;br&gt;并且在保证&lt;code&gt;稳定&lt;/code&gt;的前提下尽可能的提高&lt;code&gt;资源利用率&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;而且还有个问题, 我们没有购买主机的权限&lt;br&gt;需要先由我们下订单, 然后通过邮件通知合作方完成订单的支付&lt;br&gt;这就导致需要预留一定数量的主机, 避免支付响应不及时引发的运营事故&lt;/p&gt;
+&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;p&gt;我们这里解决问题的是如何实现自动部署&lt;br&gt;可能一些老司机说, 自动部署嘛, 这还不简单&lt;br&gt;写个页面, 然后调用 Ansible 一下子就完成了.&lt;/p&gt;
+&lt;p&gt;但是我们想要做的是完全自动化&lt;br&gt;整个流程无人介入(不出问题的情况下)&lt;/p&gt;
+&lt;p&gt;PS: 只是部署, 不负责发布上线&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="自动化" scheme="https://zhiwei.show/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+      <category term="saltstack" scheme="https://zhiwei.show/tags/saltstack/"/>
     
   </entry>
   
