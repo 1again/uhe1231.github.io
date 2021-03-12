@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="aliyun,ack,ask,">
+  <meta name="keywords" content="大数据,clickhouse,">
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="背景Ask 是 K8S 的一种特殊扩展, 它屏蔽了 node 层, 按 pod 收费. 这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本 弹性扩展, 用多少算多少, 听起来确实很美好. Ingress 本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证 常用的是 nginx 实现的 ingress, 通过规则映射, 将站点信息抽象各位一个个的">
-<meta name="keywords" content="aliyun,ack,ask">
+<meta name="description" content="是什么从使用角度来看是一个分析型数据库 从实现角度来看是一个列式数据库系统 分析型数据库和事务型数据库字面意思是为了分析数据的数据库, 特点是需要存储的数据非常多 但是对数据的一致性没有要求, 因为分析数据后看的是趋势, 小部分数据的错误不影响总体的趋势 相对应的是事务型数据库 事务是什么简单来说, 是不可分离的多个动作 讲到事务就不得不讲讲事务四个特性 原子性, 要么都成功, 要么都失败一致性,">
+<meta name="keywords" content="大数据,clickhouse">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云ASK踩坑记录">
-<meta property="og:url" content="https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/index.html">
+<meta property="og:title" content="clickhouse啊, 你很快嘛">
+<meta property="og:url" content="https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/index.html">
 <meta property="og:site_name" content="ZhiWei Show">
-<meta property="og:description" content="背景Ask 是 K8S 的一种特殊扩展, 它屏蔽了 node 层, 按 pod 收费. 这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本 弹性扩展, 用多少算多少, 听起来确实很美好. Ingress 本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证 常用的是 nginx 实现的 ingress, 通过规则映射, 将站点信息抽象各位一个个的">
+<meta property="og:description" content="是什么从使用角度来看是一个分析型数据库 从实现角度来看是一个列式数据库系统 分析型数据库和事务型数据库字面意思是为了分析数据的数据库, 特点是需要存储的数据非常多 但是对数据的一致性没有要求, 因为分析数据后看的是趋势, 小部分数据的错误不影响总体的趋势 相对应的是事务型数据库 事务是什么简单来说, 是不可分离的多个动作 讲到事务就不得不讲讲事务四个特性 原子性, 要么都成功, 要么都失败一致性,">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://zhiwei.show/2021/03/10/resource/36a1af3073e842f18e5fa62e110c67b5.png">
-<meta property="og:image" content="https://zhiwei.show/2021/03/10/resource/6701222d063d42fca51249e4e79d87ff.png">
-<meta property="og:updated_time" content="2021-03-10T01:18:22.000Z">
+<meta property="og:updated_time" content="2021-03-11T20:41:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云ASK踩坑记录">
-<meta name="twitter:description" content="背景Ask 是 K8S 的一种特殊扩展, 它屏蔽了 node 层, 按 pod 收费. 这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本 弹性扩展, 用多少算多少, 听起来确实很美好. Ingress 本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证 常用的是 nginx 实现的 ingress, 通过规则映射, 将站点信息抽象各位一个个的">
-<meta name="twitter:image" content="https://zhiwei.show/2021/03/10/resource/36a1af3073e842f18e5fa62e110c67b5.png">
+<meta name="twitter:title" content="clickhouse啊, 你很快嘛">
+<meta name="twitter:description" content="是什么从使用角度来看是一个分析型数据库 从实现角度来看是一个列式数据库系统 分析型数据库和事务型数据库字面意思是为了分析数据的数据库, 特点是需要存储的数据非常多 但是对数据的一致性没有要求, 因为分析数据后看的是趋势, 小部分数据的错误不影响总体的趋势 相对应的是事务型数据库 事务是什么简单来说, 是不可分离的多个动作 讲到事务就不得不讲讲事务四个特性 原子性, 要么都成功, 要么都失败一致性,">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/">
+  <link rel="canonical" href="https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/">
 
 
 
 
 
-  <title>阿里云ASK踩坑记录 | ZhiWei Show</title>
+  <title>clickhouse啊, 你很快嘛 | ZhiWei Show</title>
   
 
 
@@ -266,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhiWei">
@@ -283,7 +280,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">阿里云ASK踩坑记录</h2>
+          <h2 class="post-title" itemprop="name headline">clickhouse啊, 你很快嘛</h2>
         
 
         <div class="post-meta">
@@ -296,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-10T09:15:41+08:00">
-                2021-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-08T02:09:17+08:00">
+                2021-03-08
               </time>
             
 
@@ -334,49 +331,55 @@
       
 
       
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>Ask 是 K8S 的一种特殊扩展, 它屏蔽了 node 层, 按 pod 收费.</p>
-<p>这样可以实现低成本和弹性扩容, 在大规模的伸缩中极大的增加了效率和降低了成本</p>
-<p>弹性扩展, 用多少算多少, 听起来确实很美好.</p>
-<p>Ingress 本质上是一种抽象, 顾名思义, 就是所有请求的入口, 可以对请求进行控制和验证</p>
-<p>常用的是 nginx 实现的 ingress, 通过规则映射, 将站点信息抽象各位一个个的匹配规则</p>
-<p>接着, 我们有一个前端打点上报需求, 准备用阿里云的 ask 来做.</p>
-<p>只是一个很简单的通过 http 请求将数据上报至阿里云 SLS 的服务.</p>
-<p>没有状态, 存储之类的需求, 所以用 golang 写了一个简单的 api 来解决.</p>
-<p>万事俱备, 等待数据, 然而研发同学说不太对劲.</p>
-<a id="more"></a>
-<h1 id="tls-证书错误"><a href="#tls-证书错误" class="headerlink" title="tls 证书错误"></a>tls 证书错误</h1><p>直接甩了个错误给我看.</p>
-<p><img src="../resource/36a1af3073e842f18e5fa62e110c67b5.png" alt="d7233d8360b2c6a84ac4fcfd0bc0b6aa.png"></p>
-<p>一看这信息, 很明显是证书问题.</p>
-<p>然后想起, 好像确实没有在 ingress 里面配置证书.</p>
-<p>阿里云上的 ingress 可以直接在控制台添加证书信息.</p>
-<p>本质上是用了 ingress 的<code>nginx.ingress.kubernetes.io/auth-tls-secret</code>注解来实现</p>
-<p>直接在控制配置相关的 tls 信息即可, 然而现实很骨感.</p>
-<p>错误依旧… 难道是我打开的方式不对?</p>
-<p>再三检查发现后并没有发现错误, 没有办法.</p>
-<p>通过在浏览器里面直接访问域名, 提示证书不安全.</p>
-<p><img src="../resource/6701222d063d42fca51249e4e79d87ff.png" alt="985e414f3cdab51bb3663ac3959dd6cd.png"></p>
-<p>好家伙, 这是啥, <code>ingress controller fake certificate</code>, 明明已经指定了域名的证书.</p>
-<p>咋会出现这么个玩意, 看起来像是 ingress 自己生成的, 但是原生的 ingress 应该是不带这玩意的.</p>
-<p>百思不得其解啊, 最终发现 slb 居然是七层的负载均衡, 这就相当于其实客户端是和 slb 的七层负载均衡进行 tls 加密.</p>
-<p>然后对后端的服务进行了请求, 最终将内容返回给客户端, 所以直接在 slb 层配置证书后解决了问题.</p>
-<h1 id="CORS-问题"><a href="#CORS-问题" class="headerlink" title="CORS 问题"></a>CORS 问题</h1><p>然而现实还不肯放过我这个孩子.</p>
-<p>解决了 slb 后居然又出了一个新的问题, 就是 cors</p>
-<p>为了防止恶意攻击, 所以浏览器限制了客户端的请求.</p>
-<p>我们输入域名访问的站点是主站, 如果请求非主站的域名.</p>
-<p>需要返回<code>Access-Control-Allow-*</code>等信息, 来通知浏览器放行.</p>
-<p>所以我们需要在七层的负载均衡上提供相应的头信息.</p>
-<p>然而悲剧的是阿里云提供的七层负载均衡并不能自定义相关的头信息.</p>
-<h1 id="最终"><a href="#最终" class="headerlink" title="最终"></a>最终</h1><p>在和阿里云的同学沟通的确实七层的负载均衡无法提供自定义的头信息</p>
-<p>所以还是换回了 ack 使用, 而且 ask 的整个架构也和 ack 不太一样.</p>
-<p>ack 的数据流是这样的<code>client-&gt;slb-&gt;nodeport-&gt;ipvs-&gt;nginx-ingress-&gt;service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. client将数据发送给slb的TCP端口上</span><br><span class="line">2. slb将数据包转发给nodeport</span><br><span class="line">3. 数据通过nodeport进入ipvs</span><br><span class="line">4. ipvs再将数据通过不同的策略转给nginx-ingress的pod</span><br><span class="line">5. nginx-ingress最终对相应的反向代理请求service</span><br></pre></td></tr></table></figure>
-<p>ask 的数据流很简单<code>client-&gt;alb-ingress-&gt;service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 客户端发送请求给alb-ingress</span><br><span class="line">2. alb-ingress通过eni直接进行反向代理请求service</span><br></pre></td></tr></table></figure>
-<p>这也就意味着 alb-ingress 和 service 的网络是互通的, 并且将路由信息直接注册到 alb-ingress 中.</p>
-<p>ask 方案性能最好, 没有过多的网络消耗, 但是无法兼容 nginx-ingress, 有些需求可能无法实现, 比如 cors</p>
-<p>ack 在性能上虽然不是最佳, 但胜在灵活性上, 可以兼容 nginx-ingress 注解灵活的对请求进行控制</p>
-<p>性能和灵活一直都在相爱相杀, 最终还是取决于业务场景.</p>
-<p>以上是我在使用阿里云的 ack 和 ask 碰到的问题和总结.</p>
+        <h1 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h1><p>从使用角度来看是一个分析型数据库</p>
+<p>从实现角度来看是一个列式数据库系统</p>
+<h2 id="分析型数据库和事务型数据库"><a href="#分析型数据库和事务型数据库" class="headerlink" title="分析型数据库和事务型数据库"></a>分析型数据库和事务型数据库</h2><p>字面意思是为了分析数据的数据库, 特点是需要存储的数据非常多</p>
+<p>但是对数据的一致性没有要求, 因为分析数据后看的是趋势, 小部分数据的错误不影响总体的趋势</p>
+<p>相对应的是事务型数据库</p>
+<h2 id="事务是什么"><a href="#事务是什么" class="headerlink" title="事务是什么"></a>事务是什么</h2><p>简单来说, 是不可分离的多个动作</p>
+<p>讲到事务就不得不讲讲事务四个特性</p>
+<p>原子性, 要么都成功, 要么都失败<br>一致性, 同一个事务中, 多次查询的数据要一致<br>隔离性, 每个事务要尽可能的不影响其他事务<br>持久性, 写入后不能丢失数据</p>
+<p>事务性数据库对一致性要求很高</p>
+<p>分析型数据库对海量数据要求很高</p>
+<p>分析型的数据库一般没有<code>一致性</code>, <code>隔离性</code>, <code>原子性</code>, 但是肯定会有<code>持久性</code></p>
+<h1 id="什么是列式数据库"><a href="#什么是列式数据库" class="headerlink" title="什么是列式数据库"></a>什么是列式数据库</h1><p>比如有三条记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,clickhouse,database</span><br><span class="line">2,mysql,database</span><br><span class="line">3,nginx,web</span><br></pre></td></tr></table></figure>
+<p>如果我们按照每行进行存储, 那就是行式数据库</p>
+<p>比如这样存储:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,clickhouse,database|2,mysql,database|3,nginx,web</span><br></pre></td></tr></table></figure>
+<p>而我们在分析数据的时候经常会选取几列的数据进行统计分析</p>
+<p>如果是行式存储的话, 会将整条的数据也一并读取出来(核心思想是减少</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,2,3|clickhouse,mysql,nginx|database,database,web</span><br></pre></td></tr></table></figure>
+<p>而如果是列式数据库, 则只会读取相关列的数据</p>
+<p>通常随着数据的增大, 磁盘的 IO 会首先出现瓶颈.</p>
+<p>采用列式数据库能够的大量减少读取的数据</p>
+<p>并且在因为每列的数据类型都是相同的, 所以每列都能压缩数据, 减少存储大小</p>
+<p>因为总数据量的减少, 所以在磁盘 IO 又进一步的降低了.</p>
+<p>但是涉及到压缩和解压, 导致相比于其他数据库会使用更多的 CPU 资源</p>
+<p>所以, <code>clickhouse大部分情况下都是CPU先跑满, 而磁盘IO方面不会成为瓶颈</code></p>
+<h1 id="分布式数据库"><a href="#分布式数据库" class="headerlink" title="分布式数据库?"></a>分布式数据库?</h1><p>这样说可能不对劲, 因为 clickhouse 的分布式是体现在 table 层的.</p>
+<p>打个比方, 我们有 10 万条数据, 两个节点, 不考虑双副本的情况下(高可用)</p>
+<p>将 5 万条数据存入节点 1, 另 5 万条数据存入节点 2</p>
+<p>这个存储数据的东西叫做本地表, 是保存了实实在在的数据</p>
+<p>另外通过创建分布式表将本地表关联起来, 从而实现分片的效果</p>
+<p>我们查询数据的时候直接实用分布式表名, 分布式表会自动帮我们去每个本地表上查询数据</p>
+<p>然后在进行聚合汇总</p>
+<p>那我们写数据的时候也写入分布式表吗?</p>
+<h2 id="分片和负载均衡"><a href="#分片和负载均衡" class="headerlink" title="分片和负载均衡"></a>分片和负载均衡</h2><p>clickhouse 分片和其他分布式集群有点不太一样.</p>
+<p>我们确实可以将数据写入分布式表</p>
+<p>但是规模上来了后不太推荐这种做法, 主要是性能的问题.</p>
+<p>分布式表写入会额外将数据写入当前收到请求的节点, 然后再将数据写入相应的分片</p>
+<p>推荐写入数据的方式是, 通过负载均衡将数据写入不同的分片</p>
+<p>从逻辑上来说, 每个分片是相互独立的数据</p>
+<p>具体的数据分布情况要看负载均衡的调度策略, 以及每次写入 batch 的大小</p>
+<p>这个需要在业务使用中多加注意</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>非常适合用来做用户行为分析</p>
+<p>大部分应用的瓶颈都在 IO 上, clickhouse 的架构设计避开了这点</p>
+<p>最大限度的利用了多核的优势, 比如从磁盘读取数据后的并行解压, 以及数据分片的使用</p>
+<p>但是在查询使用过程中需要做一些兼容.</p>
+<h1 id="一个大胆的想法"><a href="#一个大胆的想法" class="headerlink" title="一个大胆的想法"></a>一个大胆的想法</h1><p>既然 clickhouse 能够存储大量的数据并且把数据压缩起来.</p>
+<p>是不是可以将游戏通信中的数据存入 clickhouse 中.</p>
+<p>这样可以分析游戏中的<code>热点请求</code>以及, 帮助游戏<code>排查业务Bug</code></p>
 
       
     </div>
@@ -394,11 +397,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/aliyun/" rel="tag"># aliyun</a>
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
           
-            <a href="/tags/ack/" rel="tag"># ack</a>
-          
-            <a href="/tags/ask/" rel="tag"># ask</a>
+            <a href="/tags/clickhouse/" rel="tag"># clickhouse</a>
           
         </div>
       
@@ -411,18 +412,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/03/10/993b27b34e7a4165a667a75dcf128296/" rel="next" title="业务监控整理总结">
-                <i class="fa fa-chevron-left"></i> 业务监控整理总结
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/03/10/78b08057401441c8bd6c141f7665a0da/" rel="prev" title="使用openresty构建的外部测试网关">
-                使用openresty构建的外部测试网关 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/03/08/34f2635ca876481da35832a0995e4875/" rel="prev" title="flink启动job随机卡住故障排查">
+                flink启动job随机卡住故障排查 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tls-证书错误"><span class="nav-number">2.</span> <span class="nav-text">tls 证书错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CORS-问题"><span class="nav-number">3.</span> <span class="nav-text">CORS 问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最终"><span class="nav-number">4.</span> <span class="nav-text">最终</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#是什么"><span class="nav-number">1.</span> <span class="nav-text">是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析型数据库和事务型数据库"><span class="nav-number">1.1.</span> <span class="nav-text">分析型数据库和事务型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务是什么"><span class="nav-number">1.2.</span> <span class="nav-text">事务是什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是列式数据库"><span class="nav-number">2.</span> <span class="nav-text">什么是列式数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式数据库"><span class="nav-number">3.</span> <span class="nav-text">分布式数据库?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分片和负载均衡"><span class="nav-number">3.1.</span> <span class="nav-text">分片和负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个大胆的想法"><span class="nav-number">5.</span> <span class="nav-text">一个大胆的想法</span></a></li></ol></div>
             
 
           </div>

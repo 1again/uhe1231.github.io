@@ -263,6 +263,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2021/03/12/f4b54833899b4b93a4b968318ae4afec/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhiWei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhiWei Show">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/12/f4b54833899b4b93a4b968318ae4afec/" itemprop="url">qcloud的k8s集群界面编辑导致pod无法启动</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-12T02:52:18+08:00">
+                2021-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="日志满了"><a href="#日志满了" class="headerlink" title="日志满了"></a>日志满了</h1><p>收到告警 clickhouse-zookeeper 的告警</p>
+<p><img src="../resource/7f64c601114f4f5db48126eb94fef2b8.png" alt="de642b7c366f05b6982eaead18a59758.png"></p>
+<p>zookeeper 其实是有参数可以实现自动清理以前的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 间隔多久进行一次清理</span><br><span class="line">autopurge.purgeInterval: int, default=0</span><br><span class="line"># 保留多少个数据, 这里包括日志和快照的数据</span><br><span class="line">autopurge.snapretaincount: int, default=3</span><br></pre></td></tr></table></figure>
+<p>zookeeper 上如果没有设置<code>autopurge.purgeInterval</code>参数, 默认是 0, 表示关闭自动清理</p>
+<p>导致数据一直保留着, 把磁盘写满了(其实也就 10G, 小规模的集群)</p>
+<p>因为使用 helm 部署的 zookeeper, 参数都是通过环境变量控制的</p>
+<p>所以需要修改 stateful 的配置来修改这个<code>ZOO_AUTOPURGE_INTERVAL</code>参数</p>
+<h1 id="无法启动-pod"><a href="#无法启动-pod" class="headerlink" title="无法启动 pod"></a>无法启动 pod</h1><p>通过 qcloud k8s 的界面修改完了后, 发现 pod 无法启动</p>
+<p>一直在报这个错误<code>Back-off restarting failed container</code></p>
+<p>根据之前的经验, 都是因为 pod 里面的进程执行错误导致的</p>
+<p>一般都能在日志里面找到相关的错误信息, 但是这次什么都没有.</p>
+<p>而且因为 pod 一直在重启, 也无法登录进 container 里面</p>
+<p>尝试还原修改, 问题依然存在.</p>
+<p>既然如此, 那就修改 pod 的<code>command</code>, 通过<code>tail -f /dev/null</code>让 pod 保持住</p>
+<p>然而当我打开编辑界面时发现不对劲啊, 命令和参数全乱套了.</p>
+<p><img src="../resource/098223c1429d4087907869be1c6a9a91.png" alt="225c9433a810ad36020ee71a09abe055.png"></p>
+<p>我做了啥, 只不过修改了一个环境变量而已</p>
+<p>看来编辑器不可靠, 直接打开了 stateful 的 yaml 文件, 并且找到另一个 zookeeper 的 yaml 文件进行对比</p>
+<p><img src="../resource/38ceb7c23da54ea5a086b12cc5f59113.png" alt="4f2ef247df4c65890c6f0b4e3316c53e.png"></p>
+<p>左边是有问题的, 右边是正常的.</p>
+<p>很明显, 在使用 qcloud k8s 编辑器的时候, 将换行都转成了参数.</p>
+<p>导致 pod 运行不起来.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>以为是小问题, 修改不会有邮箱, 结果还是坑了自己</li>
+<li>云厂商的也不太可靠啊, 能写 yaml 还是写 yaml 吧</li>
+<li>因为是用来测试的, 所以部署时也没有考虑清理数据的问题</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2021/03/11/2dc0f4142a23440ca1e50cde7c6d02e0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -363,13 +511,12 @@
 <li>图片插入</li>
 </ol>
 <h1 id="Blog-迁移"><a href="#Blog-迁移" class="headerlink" title="Blog 迁移"></a>Blog 迁移</h1><p>既然云笔记本有开源的方案, 那有没有将 Joplin 转为 blog 的项目呢</p>
-<p>答案是当然有<a href="https://github.com/rxliuli/joplin-blog" target="_blank" rel="noopener">joplin-blog</a></p>
+<p>答案是肯定的<a href="https://github.com/rxliuli/joplin-blog" target="_blank" rel="noopener">joplin-blog</a></p>
 <p>一个将 joplin 转为 hexo 的项目, 虽然项目还比较年轻</p>
 <p>但基本上够用了, 最重要是, 将笔记转为 Blog 相比以前真的是方便太多</p>
 <p>而且还很好的解决了图片的问题</p>
-<p>再也找不到偷懒的借口了.</p>
+<p>再也找不到偷懒的借口了, T.T</p>
 <h1 id="还有问题"><a href="#还有问题" class="headerlink" title="还有问题"></a>还有问题</h1><h2 id="joplin-blog-的问题"><a href="#joplin-blog-的问题" class="headerlink" title="joplin-blog 的问题"></a>joplin-blog 的问题</h2><ol>
-<li>将之前 Blog 上文章转到 joplin, 但是文章的时间全都丢失了.</li>
 <li>Blog 的置顶不太方便, 需要将文章 ID 记录下来, 然后存在配置中</li>
 </ol>
 <h2 id="joplin-的问题"><a href="#joplin-的问题" class="headerlink" title="joplin 的问题"></a>joplin 的问题</h2><ol>
@@ -1462,140 +1609,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhiwei.show/2021/03/10/993b27b34e7a4165a667a75dcf128296/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhiWei">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZhiWei Show">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/10/993b27b34e7a4165a667a75dcf128296/" itemprop="url">业务监控整理总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-10T06:02:24+08:00">
-                2021-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="监控范围"><a href="#监控范围" class="headerlink" title="监控范围"></a>监控范围</h1><ol>
-<li>用户体验跟踪</li>
-<li>应用质量跟踪</li>
-<li>应用性能跟踪</li>
-</ol>
-<p>跟踪相对指标, 不是绝对指标</p>
-<h1 id="监控分层"><a href="#监控分层" class="headerlink" title="监控分层"></a>监控分层</h1><h2 id="用户体验监控-前端"><a href="#用户体验监控-前端" class="headerlink" title="用户体验监控(前端)"></a>用户体验监控(前端)</h2><p>因成本(研发成本)原因忽略用户手机的性能</p>
-<p>只关注<code>请求超时</code>和<code>请求错误</code>的记录</p>
-<p>因为成本(研发成本)原因无法获取所有的记录</p>
-<p>所以我们使用<code>总用户数</code>作为比较的指标</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/03/10/993b27b34e7a4165a667a75dcf128296/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1646,7 +1659,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1668,7 +1681,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
