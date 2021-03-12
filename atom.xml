@@ -18,8 +18,8 @@
   
   <entry>
     <title>qcloud的k8s集群界面编辑导致pod无法启动</title>
-    <link href="https://zhiwei.show/2021/03/12/f4b54833899b4b93a4b968318ae4afec/"/>
-    <id>https://zhiwei.show/2021/03/12/f4b54833899b4b93a4b968318ae4afec/</id>
+    <link href="https://zhiwei.show/f4b54833899b4b93a4b968318ae4afec/"/>
+    <id>https://zhiwei.show/f4b54833899b4b93a4b968318ae4afec/</id>
     <published>2021-03-11T18:52:18.000Z</published>
     <updated>2021-03-12T02:53:32.000Z</updated>
     
@@ -44,8 +44,8 @@
   
   <entry>
     <title>BLOG方案的调整</title>
-    <link href="https://zhiwei.show/2021/03/11/2dc0f4142a23440ca1e50cde7c6d02e0/"/>
-    <id>https://zhiwei.show/2021/03/11/2dc0f4142a23440ca1e50cde7c6d02e0/</id>
+    <link href="https://zhiwei.show/2dc0f4142a23440ca1e50cde7c6d02e0/"/>
+    <id>https://zhiwei.show/2dc0f4142a23440ca1e50cde7c6d02e0/</id>
     <published>2021-03-11T00:24:20.000Z</published>
     <updated>2021-03-11T21:09:08.000Z</updated>
     
@@ -66,8 +66,8 @@
   
   <entry>
     <title>Docker-Swarm尝试引发的并发问题</title>
-    <link href="https://zhiwei.show/2021/03/10/b078bce7c017421483ca473014d6f081/"/>
-    <id>https://zhiwei.show/2021/03/10/b078bce7c017421483ca473014d6f081/</id>
+    <link href="https://zhiwei.show/b078bce7c017421483ca473014d6f081/"/>
+    <id>https://zhiwei.show/b078bce7c017421483ca473014d6f081/</id>
     <published>2021-03-10T01:31:51.000Z</published>
     <updated>2021-03-10T01:33:40.000Z</updated>
     
@@ -92,8 +92,8 @@
   
   <entry>
     <title>2019年的工作整理总结</title>
-    <link href="https://zhiwei.show/2021/03/10/c5cdc0da435e494f8037967c4df7af78/"/>
-    <id>https://zhiwei.show/2021/03/10/c5cdc0da435e494f8037967c4df7af78/</id>
+    <link href="https://zhiwei.show/c5cdc0da435e494f8037967c4df7af78/"/>
+    <id>https://zhiwei.show/c5cdc0da435e494f8037967c4df7af78/</id>
     <published>2021-03-10T01:29:24.000Z</published>
     <updated>2021-03-10T03:16:50.000Z</updated>
     
@@ -118,8 +118,8 @@
   
   <entry>
     <title>有关SaltStack的State错误的执行在其他主机上</title>
-    <link href="https://zhiwei.show/2021/03/10/397203e63bb441198edc9333273d2194/"/>
-    <id>https://zhiwei.show/2021/03/10/397203e63bb441198edc9333273d2194/</id>
+    <link href="https://zhiwei.show/397203e63bb441198edc9333273d2194/"/>
+    <id>https://zhiwei.show/397203e63bb441198edc9333273d2194/</id>
     <published>2021-03-10T01:25:04.000Z</published>
     <updated>2021-03-10T01:26:49.000Z</updated>
     
@@ -140,8 +140,8 @@
   
   <entry>
     <title>使用nginx代理跨机房的saltstack使用</title>
-    <link href="https://zhiwei.show/2021/03/10/a4f387bec6bc469db9a65aff81e63b6c/"/>
-    <id>https://zhiwei.show/2021/03/10/a4f387bec6bc469db9a65aff81e63b6c/</id>
+    <link href="https://zhiwei.show/a4f387bec6bc469db9a65aff81e63b6c/"/>
+    <id>https://zhiwei.show/a4f387bec6bc469db9a65aff81e63b6c/</id>
     <published>2021-03-10T01:24:09.000Z</published>
     <updated>2021-03-10T01:24:53.000Z</updated>
     
@@ -167,8 +167,8 @@
   
   <entry>
     <title>本地数据库迁移至云数据库的复盘总结</title>
-    <link href="https://zhiwei.show/2021/03/10/4da7bf5f40c24ab385e61585da25c951/"/>
-    <id>https://zhiwei.show/2021/03/10/4da7bf5f40c24ab385e61585da25c951/</id>
+    <link href="https://zhiwei.show/4da7bf5f40c24ab385e61585da25c951/"/>
+    <id>https://zhiwei.show/4da7bf5f40c24ab385e61585da25c951/</id>
     <published>2021-03-10T01:21:46.000Z</published>
     <updated>2021-03-10T01:23:56.000Z</updated>
     
@@ -206,8 +206,8 @@
   
   <entry>
     <title>游戏业务数据库集中式储存的问题</title>
-    <link href="https://zhiwei.show/2021/03/10/4ec7a130f7bb4ac48dfae71508b462e7/"/>
-    <id>https://zhiwei.show/2021/03/10/4ec7a130f7bb4ac48dfae71508b462e7/</id>
+    <link href="https://zhiwei.show/4ec7a130f7bb4ac48dfae71508b462e7/"/>
+    <id>https://zhiwei.show/4ec7a130f7bb4ac48dfae71508b462e7/</id>
     <published>2021-03-10T01:20:13.000Z</published>
     <updated>2021-03-10T01:21:20.000Z</updated>
     
@@ -231,8 +231,8 @@
   
   <entry>
     <title>使用openresty构建的外部测试网关</title>
-    <link href="https://zhiwei.show/2021/03/10/78b08057401441c8bd6c141f7665a0da/"/>
-    <id>https://zhiwei.show/2021/03/10/78b08057401441c8bd6c141f7665a0da/</id>
+    <link href="https://zhiwei.show/78b08057401441c8bd6c141f7665a0da/"/>
+    <id>https://zhiwei.show/78b08057401441c8bd6c141f7665a0da/</id>
     <published>2021-03-10T01:18:22.000Z</published>
     <updated>2021-03-10T01:33:50.000Z</updated>
     
@@ -257,8 +257,8 @@
   
   <entry>
     <title>阿里云ASK踩坑记录</title>
-    <link href="https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/"/>
-    <id>https://zhiwei.show/2021/03/10/f38b2488baed4a5d88966be05d09d788/</id>
+    <link href="https://zhiwei.show/f38b2488baed4a5d88966be05d09d788/"/>
+    <id>https://zhiwei.show/f38b2488baed4a5d88966be05d09d788/</id>
     <published>2021-03-10T01:15:41.000Z</published>
     <updated>2021-03-10T01:18:22.000Z</updated>
     
@@ -289,8 +289,8 @@
   
   <entry>
     <title>业务监控整理总结</title>
-    <link href="https://zhiwei.show/2021/03/10/993b27b34e7a4165a667a75dcf128296/"/>
-    <id>https://zhiwei.show/2021/03/10/993b27b34e7a4165a667a75dcf128296/</id>
+    <link href="https://zhiwei.show/993b27b34e7a4165a667a75dcf128296/"/>
+    <id>https://zhiwei.show/993b27b34e7a4165a667a75dcf128296/</id>
     <published>2021-03-09T22:02:24.000Z</published>
     <updated>2021-03-09T22:02:36.000Z</updated>
     
@@ -322,8 +322,8 @@
   
   <entry>
     <title>nginx的mirror模块请求返回400状态</title>
-    <link href="https://zhiwei.show/2021/03/10/faa6264186c549e2872823cad0749b68/"/>
-    <id>https://zhiwei.show/2021/03/10/faa6264186c549e2872823cad0749b68/</id>
+    <link href="https://zhiwei.show/faa6264186c549e2872823cad0749b68/"/>
+    <id>https://zhiwei.show/faa6264186c549e2872823cad0749b68/</id>
     <published>2021-03-09T21:55:34.000Z</published>
     <updated>2021-03-09T21:56:07.000Z</updated>
     
@@ -354,8 +354,8 @@
   
   <entry>
     <title>错误的HTTP头解析引发的故障</title>
-    <link href="https://zhiwei.show/2021/03/10/ffb30a139e094665af16e5314e55883d/"/>
-    <id>https://zhiwei.show/2021/03/10/ffb30a139e094665af16e5314e55883d/</id>
+    <link href="https://zhiwei.show/ffb30a139e094665af16e5314e55883d/"/>
+    <id>https://zhiwei.show/ffb30a139e094665af16e5314e55883d/</id>
     <published>2021-03-09T21:43:37.000Z</published>
     <updated>2021-03-09T22:29:37.000Z</updated>
     
@@ -390,8 +390,8 @@
   
   <entry>
     <title>业务的自动化部署</title>
-    <link href="https://zhiwei.show/2021/03/10/f35cc21df4554c23b02a4f88da96fce6/"/>
-    <id>https://zhiwei.show/2021/03/10/f35cc21df4554c23b02a4f88da96fce6/</id>
+    <link href="https://zhiwei.show/f35cc21df4554c23b02a4f88da96fce6/"/>
+    <id>https://zhiwei.show/f35cc21df4554c23b02a4f88da96fce6/</id>
     <published>2021-03-09T21:40:43.000Z</published>
     <updated>2021-03-09T21:43:45.000Z</updated>
     
@@ -416,8 +416,8 @@
   
   <entry>
     <title>客户端业务异常上报监控</title>
-    <link href="https://zhiwei.show/2021/03/10/1a05d579266a40bb9785b91b8de3fe70/"/>
-    <id>https://zhiwei.show/2021/03/10/1a05d579266a40bb9785b91b8de3fe70/</id>
+    <link href="https://zhiwei.show/1a05d579266a40bb9785b91b8de3fe70/"/>
+    <id>https://zhiwei.show/1a05d579266a40bb9785b91b8de3fe70/</id>
     <published>2021-03-09T21:37:05.000Z</published>
     <updated>2021-03-09T21:39:44.000Z</updated>
     
@@ -446,8 +446,8 @@
   
   <entry>
     <title>服务端业务异常日志监控</title>
-    <link href="https://zhiwei.show/2021/03/10/f2293fe655bd4009a7eef9c1fdff8dc5/"/>
-    <id>https://zhiwei.show/2021/03/10/f2293fe655bd4009a7eef9c1fdff8dc5/</id>
+    <link href="https://zhiwei.show/f2293fe655bd4009a7eef9c1fdff8dc5/"/>
+    <id>https://zhiwei.show/f2293fe655bd4009a7eef9c1fdff8dc5/</id>
     <published>2021-03-09T21:16:29.000Z</published>
     <updated>2021-03-09T21:36:23.000Z</updated>
     
@@ -471,8 +471,8 @@
   
   <entry>
     <title>Lua实现的hash合并功能</title>
-    <link href="https://zhiwei.show/2021/03/10/2ab3d2be0894444e9be040312112088e/"/>
-    <id>https://zhiwei.show/2021/03/10/2ab3d2be0894444e9be040312112088e/</id>
+    <link href="https://zhiwei.show/2ab3d2be0894444e9be040312112088e/"/>
+    <id>https://zhiwei.show/2ab3d2be0894444e9be040312112088e/</id>
     <published>2021-03-09T21:13:01.000Z</published>
     <updated>2021-03-09T21:13:12.000Z</updated>
     
@@ -495,8 +495,8 @@
   
   <entry>
     <title>flink启动job随机卡住故障排查</title>
-    <link href="https://zhiwei.show/2021/03/08/34f2635ca876481da35832a0995e4875/"/>
-    <id>https://zhiwei.show/2021/03/08/34f2635ca876481da35832a0995e4875/</id>
+    <link href="https://zhiwei.show/34f2635ca876481da35832a0995e4875/"/>
+    <id>https://zhiwei.show/34f2635ca876481da35832a0995e4875/</id>
     <published>2021-03-08T03:09:34.000Z</published>
     <updated>2021-03-09T22:28:18.000Z</updated>
     
@@ -521,8 +521,8 @@
   
   <entry>
     <title>clickhouse啊, 你很快嘛</title>
-    <link href="https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/"/>
-    <id>https://zhiwei.show/2021/03/08/b4cc7846cded4ac091be89590b09f75d/</id>
+    <link href="https://zhiwei.show/b4cc7846cded4ac091be89590b09f75d/"/>
+    <id>https://zhiwei.show/b4cc7846cded4ac091be89590b09f75d/</id>
     <published>2021-03-07T18:09:17.000Z</published>
     <updated>2021-03-11T20:41:56.000Z</updated>
     
