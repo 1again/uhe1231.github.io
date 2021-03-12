@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://zhiwei.show/resource/7f64c601114f4f5db48126eb94fef2b8.png">
 <meta property="og:image" content="https://zhiwei.show/resource/098223c1429d4087907869be1c6a9a91.png">
 <meta property="og:image" content="https://zhiwei.show/resource/38ceb7c23da54ea5a086b12cc5f59113.png">
-<meta property="og:updated_time" content="2021-03-12T02:53:32.000Z">
+<meta property="og:updated_time" content="2021-03-12T02:55:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qcloud的k8s集群界面编辑导致pod无法启动">
 <meta name="twitter:description" content="日志满了收到告警 clickhouse-zookeeper 的告警  zookeeper 其实是有参数可以实现自动清理以前的数据 1234# 间隔多久进行一次清理autopurge.purgeInterval: int, default=0# 保留多少个数据, 这里包括日志和快照的数据autopurge.snapretaincount: int, default=3 zookeeper 上如果没有">
@@ -349,7 +349,7 @@
 <p>很明显, 在使用 qcloud k8s 编辑器的时候, 将换行都转成了参数.</p>
 <p>导致 pod 运行不起来.</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li>以为是小问题, 修改不会有邮箱, 结果还是坑了自己</li>
+<li>以为是小问题, 修改不会有影响, 结果还是坑了自己</li>
 <li>云厂商的也不太可靠啊, 能写 yaml 还是写 yaml 吧</li>
 <li>因为是用来测试的, 所以部署时也没有考虑清理数据的问题</li>
 </ol>
